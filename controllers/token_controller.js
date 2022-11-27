@@ -4,7 +4,7 @@ function generateNewToken(user) {
     const jwtSecretKey = process.env.JWT_SECRET_KEY;
     const data = {time: Date(), userId: user.id};
     return jwt.sign(data, jwtSecretKey,{
-        expiresIn: '120',
+        expiresIn: '120s',
     });
 }
 
