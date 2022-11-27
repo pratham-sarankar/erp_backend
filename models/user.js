@@ -30,7 +30,7 @@ const User = sequelize.define("user",
     },
     {
         sequelize,
-    }
+    },
 );
 
 User.sync().then(() => {

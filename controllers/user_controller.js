@@ -40,8 +40,8 @@ async function register(req, res) {
         //Generating new token for the user.
         const token = TokenController.generateNewToken(user);
 
-        //Deleted password from user. We don't want to send password to the front-end.
-        delete user.password;
+        //Delete password field from the user object
+        delete user.dataValues.password;
         return res.status(201).json({ status: "success", data: { user: user, token: token }, message: "User created successfully" });
 
     } catch (error) {
@@ -57,11 +57,13 @@ async function login(req, res) {
     let email = req.body.email;
     let password = req.body.password;
 
+    console.log(email);
     try {
         //Find user with the given username.
         const user = await User.findOne(
             { where: { email: email } },
         );
+        console.log(user);
 
         if (user == null) {
             return res.status(404).json({ status: "error", data: null, message: "User not found" });
@@ -75,6 +77,9 @@ async function login(req, res) {
 
         //Generate new token for the user.
         const token = TokenController.generateNewToken(user);
+
+        //Delete password field from the user object
+        delete user.dataValues.password;
         return res.status(200).json({ status: "success", data: { user: user, token: token }, message: "Login successful" });
 
     } catch (error) {
@@ -84,8 +89,19 @@ async function login(req, res) {
 }
 
 async function fetchOne(req,res){
+    const decoded = TokenController.decodeToken(req.token);
+    console.log(decoded);
 
+    //Fetching user with the userId found in the token.
+    const user = await User.findByPk(decoded.userId);
 
+    if (user == null) {
+        return res.status(404).json({ status: "error", data: null, message: "User not found" });
+    }
+
+    //Delete password field from the user object
+    delete user.dataValues.password;
+    res.json({status:"success", data:{user:user}, message:"User fetched successfully"});
 }
 
 module.exports = { register, login, fetchOne }
