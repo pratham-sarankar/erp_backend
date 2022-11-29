@@ -1,7 +1,10 @@
 const sequelize = require('../config/database')
 const { DataTypes } = require('sequelize');
 
-const User = sequelize.define("user",
+// Customers
+// User
+
+const Customer = sequelize.define("customer",
     {
         firstName: {
             type: DataTypes.STRING,
@@ -33,10 +36,10 @@ const User = sequelize.define("user",
     },
 );
 
-User.sync().then(() => {
-    console.log("User Model Synced");
+Customer.sync().then(() => {
+    console.log("Customer Model Synced");
 }).catch((error) => {
-    console.log(`User Model Syncing Failed : ${error}`);
+    console.log(`Customer Model Syncing Failed : ${error}`);
 })
 
-module.exports = User;
+module.exports = Customer;

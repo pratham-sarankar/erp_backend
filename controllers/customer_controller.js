@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const Customer = require("../models/customer");
 const TokenController = require("./token_controller");
 const EncryptionController = require('./encryption_controller');
 
@@ -22,12 +22,12 @@ async function register(req, res) {
             return res.status(400).json({
                 status:"error",
                 data:null,
-                message:"A unique Email or Phone number is required to register a new user."
+                message:"A unique Email or Phone number is required to register a new customer."
             })
         }
 
-        //Created(Built and Saved) the user in the database.
-        const user = await User.create({
+        //Created(Built and Saved) the customer in the database.
+        const customer = await Customer.create({
             firstName:firstName,
             lastName:lastName,
             username: username,
@@ -37,16 +37,16 @@ async function register(req, res) {
             password: password,
         });
 
-        //Generating new token for the user.
-        const token = TokenController.generateNewToken(user);
+        //Generating new token for the customer.
+        const token = TokenController.generateNewToken(customer);
 
-        //Delete password field from the user object
-        delete user.dataValues.password;
-        return res.status(201).json({ status: "success", data: { user: user, token: token }, message: "User created successfully" });
+        //Delete password field from the customer object
+        delete customer.dataValues.password;
+        return res.status(201).json({ status: "success", data: { customer: customer, token: token }, message: "Customer created successfully" });
 
     } catch (error) {
         if (error['name'] === 'SequelizeUniqueConstraintError') {
-            const message = `User already exist with the given ${error.errors[0].path}.`;
+            const message = `Customer already exist with the given ${error.errors[0].path}.`;
             return res.status(403).json({ status: "error", data: null, message: message });
         }
         return res.status(500).json({ status: "error", data: null, message: error })
@@ -59,28 +59,28 @@ async function login(req, res) {
 
     console.log(email);
     try {
-        //Find user with the given username.
-        const user = await User.findOne(
+        //Find customer with the given username.
+        const customer = await Customer.findOne(
             { where: { email: email } },
         );
-        console.log(user);
+        console.log(customer);
 
-        if (user == null) {
-            return res.status(404).json({ status: "error", data: null, message: "User not found" });
+        if (customer == null) {
+            return res.status(404).json({ status: "error", data: null, message: "customer not found" });
         }
 
         //Matching password
-        const matched = EncryptionController.comparePassword(password, user.password);
+        const matched = EncryptionController.comparePassword(password, customer.password);
         if (!matched) {
             return res.status(401).json({ status: "error", data: null, message: "Incorrect Password" });
         }
 
-        //Generate new token for the user.
-        const token = TokenController.generateNewToken(user);
+        //Generate new token for the customer.
+        const token = TokenController.generateNewToken(customer);
 
-        //Delete password field from the user object
-        delete user.dataValues.password;
-        return res.status(200).json({ status: "success", data: { user: user, token: token }, message: "Login successful" });
+        //Delete password field from the customer object
+        delete customer.dataValues.password;
+        return res.status(200).json({ status: "success", data: { customer: customer, token: token }, message: "Login successful" });
 
     } catch (error) {
         return res.status(501).json({ status: "error", data: null, message: error });
@@ -92,16 +92,16 @@ async function fetchOne(req,res){
     const decoded = TokenController.decodeToken(req.token);
     console.log(decoded);
 
-    //Fetching user with the userId found in the token.
-    const user = await User.findByPk(decoded.userId);
+    //Fetching customer with the uid found in the token.
+    const customer = await Customer.findByPk(decoded.uid);
 
-    if (user == null) {
-        return res.status(404).json({ status: "error", data: null, message: "User not found" });
+    if (customer == null) {
+        return res.status(404).json({ status: "error", data: null, message: "customer not found" });
     }
 
-    //Delete password field from the user object
-    delete user.dataValues.password;
-    res.json({status:"success", data:{user:user}, message:"User fetched successfully"});
+    //Delete password field from the customer object
+    delete customer.dataValues.password;
+    res.json({status:"success", data:{customer:customer}, message:"Customer fetched successfully"});
 }
 
 module.exports = { register, login, fetchOne }

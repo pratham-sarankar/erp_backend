@@ -1,4 +1,3 @@
-const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -8,7 +7,7 @@ require('dotenv').config();
 
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const customerRouter = require('./routes/customers');
 
 const app = express();
 
@@ -24,14 +23,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/user", usersRouter);
+app.use("/customer", customerRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    res.status(500).json({
+    res.status(404).json({
         status: "error",
         data: null,
-        message: "An error occurred.",
+        message: "Page not found",
     })
 });
 

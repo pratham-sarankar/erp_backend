@@ -1,18 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const UserController = require("../controllers/user_controller"); const User = require("../models/user");
+const CustomerController = require("../controllers/customer_controller"); const User = require("../models/customer");
 const TokenMiddleware = require("../middlewares/token_middlewares")
 
 router.get("/",TokenMiddleware.verifyToken, async (req, res) => {
-  return await UserController.fetchOne(req,res);
+  return await CustomerController.fetchOne(req,res);
 });
 
 router.post("/login", async (req, res) => {
-  return await UserController.login(req,res);
+  return await CustomerController.login(req,res);
 });
 
 router.post("/register", async (req, res) => {
-  return await UserController.register(req, res);
+  return await CustomerController.register(req, res);
 });
 
 module.exports = router;
