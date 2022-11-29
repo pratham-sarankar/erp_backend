@@ -124,7 +124,7 @@ async function updateDetails(req,res){
     //Updating the password.
     await customer.save();
 
-    return res.status(400).json({status:"success",data:null,message:"Details updated successfully."});
+    return res.status(200).json({status:"success",data:null,message:"Details updated successfully."});
 }
 
 async function updatePassword(req,res){
@@ -144,7 +144,7 @@ async function updatePassword(req,res){
     //Updating the password.
     await customer.save();
 
-    return res.status(400).json({status:"success",data:null,message:"Password updated successfully."});
+    return res.status(200).json({status:"success",data:null,message:"Password updated successfully."});
 }
 
 module.exports = { register, login, fetchOne, updatePassword, updateDetails }
