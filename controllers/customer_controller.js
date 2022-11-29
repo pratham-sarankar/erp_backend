@@ -137,11 +137,16 @@ async function updatePassword(req,res){
     if(customer == null){
         return res.status(404).json({status:"error",data:null,message:"User not found"});
     }
+    const password = req.body.password;
+    const newPassword = req.body.newPassword;
+    const matched = EncryptionController.comparePassword(password,customer.password);
 
-    let password = req.body.password;
-    customer.password = EncryptionController.encryptPassword(password);
+    if(!matched){
+        return res.status(401).json({status:"error",data:null,message:"Incorrect Password!"})
+    }
 
     //Updating the password.
+    customer.password = EncryptionController.encryptPassword(newPassword);
     await customer.save();
 
     return res.status(200).json({status:"success",data:null,message:"Password updated successfully."});
