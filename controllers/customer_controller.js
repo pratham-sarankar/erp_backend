@@ -66,7 +66,7 @@ async function login(req, res) {
         console.log(customer);
 
         if (customer == null) {
-            return res.status(404).json({ status: "error", data: null, message: "customer not found" });
+            return res.status(404).json({ status: "error", data: null, message: "User not found" });
         }
 
         //Matching password
@@ -96,12 +96,35 @@ async function fetchOne(req,res){
     const customer = await Customer.findByPk(decoded.uid);
 
     if (customer == null) {
-        return res.status(404).json({ status: "error", data: null, message: "Customer not found" });
+        return res.status(404).json({ status: "error", data: null, message: "User not found" });
     }
 
     //Delete password field from the customer object
     delete customer.dataValues.password;
     res.json({status:"success", data:{customer:customer}, message:"Customer fetched successfully"});
+}
+
+async function updateDetails(req,res){
+    const decoded = TokenController.decodeToken(req.token);
+    console.log(decoded);
+
+    //Fetching customer with the uid found in the token.
+    const customer = await Customer.findByPk(decoded.uid);
+
+    if(customer == null){
+        return res.status(404).json({status:"error",data:null,message:"User not found"});
+    }
+
+    customer.firstName = req.body.firstName;
+    customer.lastName = req.body.lastName;
+    customer.username = req.body.username;
+    customer.email = req.body.email;
+    customer.phoneNumber = req.body.phoneNumber;
+
+    //Updating the password.
+    await customer.save();
+
+    return res.status(400).json({status:"success",data:null,message:"Details updated successfully."});
 }
 
 async function updatePassword(req,res){
@@ -112,7 +135,7 @@ async function updatePassword(req,res){
     const customer = await Customer.findByPk(decoded.uid);
 
     if(customer == null){
-        return res.status(404).json({status:"error",data:null,message:"Customer not found"});
+        return res.status(404).json({status:"error",data:null,message:"User not found"});
     }
 
     let password = req.body.password;
@@ -124,4 +147,4 @@ async function updatePassword(req,res){
     return res.status(400).json({status:"success",data:null,message:"Password updated successfully."});
 }
 
-module.exports = { register, login, fetchOne,updatePassword }
+module.exports = { register, login, fetchOne, updatePassword, updateDetails }
