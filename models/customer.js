@@ -7,28 +7,28 @@ const { DataTypes } = require('sequelize');
 const Customer = sequelize.define("customer",
     {
         firstName: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(50),
         },
         lastName: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(50),
         },
         username: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(75),
             unique: true,
         },
         photoUrl:{
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(255),
         },
         email: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(50),
             unique: true,
         },
         phoneNumber: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(20),
             unique: true,
         },
         password: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(255),
         },
     },
     {
