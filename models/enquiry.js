@@ -11,7 +11,6 @@ const Enquiry = sequelize.define("enquiry",{
     },
     email:{
         type: DataTypes.STRING(50),
-        unique:true,
     },
     subject: {
         type: DataTypes.TEXT('tiny'),
