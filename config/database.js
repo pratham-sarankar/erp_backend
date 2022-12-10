@@ -6,8 +6,9 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, pr
     dialect: 'mysql',
 })
 
-sequelize.authenticate().then(()=>{
+sequelize.authenticate().then(async ()=>{
     console.log("Database Connection Established");
+    await sequelize.sync();
 }).catch((error)=>{
     console.log(`Database Connection Failed ${error}`);
 })

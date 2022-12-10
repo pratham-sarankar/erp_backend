@@ -90,3 +90,6 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+// rsync -e "ssh -i ." -av --exclude={'dist','node_modules'} ./ ubuntu@65.0.129.67:/home/ubuntu/erp_backend
+

@@ -1,4 +1,4 @@
-const Enquiry = require("../models/enquiry");
+const {Enquiry} = require("../models");
 
 async function insertOne(req,res){
     const firstName = req.body.firstName;

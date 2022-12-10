@@ -20,11 +20,4 @@ const Enquiry = sequelize.define("enquiry",{
     }
 })
 
-
-Enquiry.sync().then(() => {
-    console.log("Enquiry Model Synced");
-}).catch((error) => {
-    console.log(`Enquiry Model Syncing Failed : ${error}`);
-})
-
 module.exports = Enquiry;

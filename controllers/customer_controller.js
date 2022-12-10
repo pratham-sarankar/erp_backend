@@ -59,7 +59,7 @@ async function login(req, res) {
 
     console.log(email);
     try {
-        //Find customer with the given username.
+        //Find customer with the given email.
         const customer = await Customer.findOne(
             { where: { email: email } },
         );
