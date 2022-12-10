@@ -2,7 +2,7 @@ const sequelize = require('../config/database')
 const { DataTypes } = require('sequelize');
 
 
-const Class = sequelize.define("class",
+const Product = sequelize.define("product",
     {
         title: {
             type: DataTypes.STRING(100),
@@ -10,17 +10,16 @@ const Class = sequelize.define("class",
         photoUrl:{
             type:DataTypes.STRING(255),
         },
-        description:{
-            type: DataTypes.TEXT("medium"),
+        price:{
+            type:DataTypes.INTEGER,
         },
-        limit:{
-            type: DataTypes.INTEGER,
-        },
+        discount:{
+            type:DataTypes.DOUBLE,
+        }
     },
     {
         sequelize,
     },
 );
 
-
-module.exports = Class;
+module.exports = Product;

@@ -3,7 +3,7 @@ const router = express.Router();
 const ClassController = require("../controllers/class_controller");
 const TokenMiddleware = require("../middlewares/token_middlewares");
 
-router.get("/",TokenMiddleware.verifyToken,async (req,res)=>{
+router.get("/",async (req,res)=>{
     return await ClassController.fetchAll(req,res);
 });
 
