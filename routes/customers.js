@@ -7,6 +7,10 @@ router.get("/",TokenMiddleware.verifyToken, async (req, res) => {
   return await CustomerController.fetchOne(req,res);
 });
 
+router.get("/all",TokenMiddleware.verifyToken,async function (req,res) {
+  return await CustomerController.fetchAll(req,res);
+})
+
 router.post("/login", async (req, res) => {
   return await CustomerController.login(req,res);
 });

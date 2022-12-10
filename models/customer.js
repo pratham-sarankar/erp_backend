@@ -30,6 +30,11 @@ const Customer = sequelize.define("customer",
     },
     {
         sequelize,
+        scopes:{
+            withoutPassword:{
+                attributes:{exclude:'password'}
+            }
+        }
     },
 );
 

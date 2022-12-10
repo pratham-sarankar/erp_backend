@@ -104,6 +104,12 @@ async function fetchOne(req,res){
     res.json({status:"success", data:{customer:customer}, message:"Customer fetched successfully"});
 }
 
+async function fetchAll(req,res){
+    const customers =await Customer.scope("withoutPassword").findAll();
+    console.log(customers);
+    return res.status(200).json({status:"success",data:customers,message:"Customers fetched successfully"});
+}
+
 async function updateDetails(req,res){
     const decoded = TokenController.decodeToken(req.token);
     console.log(decoded);
@@ -152,4 +158,4 @@ async function updatePassword(req,res){
     return res.status(200).json({status:"success",data:null,message:"Password updated successfully."});
 }
 
-module.exports = { register, login, fetchOne, updatePassword, updateDetails }
+module.exports = { register, login, fetchOne,fetchAll, updatePassword, updateDetails }
