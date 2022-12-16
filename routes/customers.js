@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const CustomerController = require("../controllers/customer_controller"); 
+const CustomerController = require("../controllers/customers/customer_controller");
 const TokenMiddleware = require("../middlewares/token_middlewares")
 
 router.get("/",TokenMiddleware.verifyToken, async (req, res) => {

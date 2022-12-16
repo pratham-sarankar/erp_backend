@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const TokenMiddleware = require("../middlewares/token_middlewares");
-const ProductController = require("../controllers/product_controller");
+const ProductController = require("../controllers/shop/product_controller");
 
 
 router.get("/",TokenMiddleware.verifyToken, async (req,res)=>{

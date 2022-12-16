@@ -1,6 +1,6 @@
-const Customer = require("../models/customer");
-const TokenController = require("./token_controller");
-const EncryptionController = require('./encryption_controller');
+const Customer = require("../../models/customer");
+const TokenController = require("../token_controller");
+const EncryptionController = require('../encryption_controller');
 
 
 async function register(req, res) {

@@ -13,9 +13,6 @@ const Class = sequelize.define("class",
         description:{
             type: DataTypes.TEXT("medium"),
         },
-        limit:{
-            type: DataTypes.INTEGER,
-        },
     },
     {
         sequelize,
