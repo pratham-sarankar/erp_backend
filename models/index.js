@@ -1,8 +1,23 @@
 //This file created relationships between the models.
+const User = require("./user");
 const Tag = require("./tag");
 const Designation = require("./designation")
 const Class = require("./class");
 const Employee = require("./employee")
+const UserGroup = require("./user_group");
+
+//User and employee
+User.belongsTo(Employee,{
+    foreignKey:"employee_id",
+});
+
+//User and user group relation
+UserGroup.hasMany(User,{
+    foreignKey:"group_id",
+});
+User.belongsTo(UserGroup,{
+    foreignKey:"group_id",
+})
 
 
 

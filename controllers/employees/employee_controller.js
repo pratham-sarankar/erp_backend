@@ -145,16 +145,15 @@ async function deleteEmployee(req,res){
 }
 
 async function deleteEmployees(req,res){
-    const ids = req.body.ids;
-
+    const ids = req.query.ids;
+    console.log(ids);
     try{
         await Employee.destroy({where:{id:ids}})
         return res.status(200).json({status:"success",data:null,message:"Employees deleted successfully."});
     }catch (e) {
+        console.log(e);
         return res.status(500).json({status:"error",data:e,message:"An error occurred"});
     }
-
-
 }
 
 module.exports = {fetchAll,insertOne,uploadProfilePicture,sendProfilePicture, setDesignation, updateOne,deleteEmployee,deleteEmployees};

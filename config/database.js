@@ -8,7 +8,9 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, pr
 
 sequelize.authenticate().then(async ()=>{
     console.log("Database Connection Established");
-    await sequelize.sync();
+    await sequelize.sync({
+        alter: true
+    });
 }).catch((error)=>{
     console.log(`Database Connection Failed ${error}`);
 })

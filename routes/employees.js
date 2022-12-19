@@ -29,12 +29,13 @@ router.patch("/:id/photo", MulterMiddleware.uploader, S3Middleware.uploader, asy
     return await EmployeeController.uploadProfilePicture(req,res);
 });
 
+router.delete("/",async function (req,res){
+    return await EmployeeController.deleteEmployees(req,res);
+});
+
 router.delete("/:id",async function(req,res){
     return await EmployeeController.deleteEmployee(req,res);
 });
 
-router.delete("/",async function (req,res){
-    return await EmployeeController.deleteEmployees(req,res);
-});
 
 module.exports = router;
