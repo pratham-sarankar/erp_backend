@@ -25,6 +25,6 @@ router.post("/updateDetails",TokenMiddleware.verifyToken,async function (req,res
 
 router.post('/updatePassword',TokenMiddleware.verifyToken,async function (req,res) {
   return await CustomerController.updatePassword(req,res);
-} )
+});
 
 module.exports = router;
