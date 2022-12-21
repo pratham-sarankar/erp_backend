@@ -29,7 +29,7 @@ Employee.belongsTo(Designation,{foreignKey:"designation_id"});
 
 
 //Class and Employee relation
-Class.hasOne(Employee,{foreignKey:"class_id"});
+Class.belongsTo(Employee,{foreignKey:"employee_id"});
 
 
 //Class and Tags relation

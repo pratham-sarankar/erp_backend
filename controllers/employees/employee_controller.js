@@ -35,6 +35,13 @@ async function insertOne(req, res) {
             })
         }
 
+        //Find designation or throw 404 error.
+        if(designationId!=null){
+            const designation = await Designation.findByPk(designationId);
+            if(designation==null)
+                return res.status(404).json({status:"error",data:null,message:"Designation not found"});
+        }
+
         //Created(Built and Saved) the employee in the database.
         const employee = await Employee.create(
             {
