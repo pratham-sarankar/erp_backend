@@ -6,13 +6,11 @@ const unlinkFile = util.promisify(fs.unlink);
 async function uploader(req,res,next){
     try{
         const fileStream = fs.createReadStream(req.file.path);
-
         const uploadParams = {
             Bucket: process.env.AWS_BUCKET_NAME,
             Body: fileStream,
             Key: req.file.filename
         }
-
         const result = await s3.upload(uploadParams).promise();
         await unlinkFile(req.file.path);
 

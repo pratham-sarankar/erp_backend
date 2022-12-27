@@ -2,12 +2,13 @@ const express = require("express");
 const router = express.Router();
 const CustomerController = require("../controllers/customers/customer_controller");
 const TokenMiddleware = require("../middlewares/token_middlewares")
+const S3Middleware = require("../middlewares/aws_s3_middleware");
 
-router.get("/",TokenMiddleware.verifyToken, async (req, res) => {
+router.get("/:id", async (req, res) => {
   return await CustomerController.fetchOne(req,res);
 });
 
-router.get("/all",TokenMiddleware.verifyToken,async function (req,res) {
+router.get("/all",async function (req,res) {
   return await CustomerController.fetchAll(req,res);
 })
 
@@ -19,12 +20,16 @@ router.post("/register", async (req, res) => {
   return await CustomerController.register(req, res);
 });
 
-router.post("/updateDetails",TokenMiddleware.verifyToken,async function (req,res) {
+router.put("/",async function (req,res) {
   return await CustomerController.updateDetails(req,res);
 });
 
-router.post('/updatePassword',TokenMiddleware.verifyToken,async function (req,res) {
+router.patch('/password',async function (req,res) {
   return await CustomerController.updatePassword(req,res);
+});
+
+router.get("/images/:key",S3Middleware.downloader,async (req,res)=>{
+  return req.stream.pipe(res);
 });
 
 module.exports = router;

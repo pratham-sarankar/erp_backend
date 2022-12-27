@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -7,7 +8,7 @@ require('dotenv').config();
 
 
 const indexRouter = require('./routes/index');
-const imageRouter = require("./routes/images");
+const fileRouter = require("./routes/files");
 const customerRouter = require('./routes/customers');
 const enquiryRouter = require('./routes/enquiry');
 const employeeRouter = require('./routes/employees');
@@ -32,7 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/image",imageRouter);
+app.use("/file",fileRouter);
 app.use("/customer", customerRouter);
 app.use("/enquiry",enquiryRouter);
 app.use("/employee",employeeRouter);

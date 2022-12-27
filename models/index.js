@@ -7,6 +7,9 @@ const Employee = require("./employee")
 const UserGroup = require("./user_group");
 
 //User and employee
+Employee.hasMany(User,{
+    foreignKey:"employee_id",
+})
 User.belongsTo(Employee,{
     foreignKey:"employee_id",
 });

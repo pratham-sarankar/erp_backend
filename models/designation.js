@@ -7,6 +7,7 @@ const Designation = sequelize.define("designation",
         name: {
             type: DataTypes.STRING(100),
             unique:true,
+            nullable:false,
         },
     },
     {

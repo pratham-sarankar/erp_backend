@@ -6,6 +6,9 @@ async function insertOne(req,res){
     const name = req.body.name;
     let designation;
     try {
+        if(name===null||name===undefined){
+            return res.status(400).json({status:"error",data:null,message:"Invalid Designation."});
+        }
         designation = await Designation.create({name: name})
     }catch (e) {
         return res.status(500).json({status:"error",data:e,message:"An error occured"});

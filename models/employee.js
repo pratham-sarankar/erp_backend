@@ -16,6 +16,7 @@ const Employee = sequelize.define("employee",
         phoneNumber: {
             type: DataTypes.STRING(20),
             unique: true,
+
         },
         dob:{
             type: DataTypes.DATEONLY,

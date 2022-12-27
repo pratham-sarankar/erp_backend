@@ -57,7 +57,6 @@ async function login(req, res) {
     let email = req.body.email;
     let password = req.body.password;
 
-    console.log(email);
     try {
         //Find customer with the given email.
         const customer = await Customer.findOne(
@@ -66,7 +65,7 @@ async function login(req, res) {
         console.log(customer);
 
         if (customer == null) {
-            return res.status(404).json({ status: "error", data: null, message: "User not found" });
+            return res.status(404).json({ status: "error", data: null, message: "Customer not found" });
         }
 
         //Matching password
@@ -90,10 +89,10 @@ async function login(req, res) {
 
 async function fetchOne(req,res){
 
-    const decoded = TokenController.decodeToken(req.token);
+    const id = req.params.id;
 
     //Fetching customer with the uid found in the token.
-    const customer = await Customer.findByPk(decoded.uid);
+    const customer = await Customer.findByPk(id);
 
     if (customer == null) {
         return res.status(404).json({ status: "error", data: null, message: "User not found" });
@@ -118,7 +117,7 @@ async function updateDetails(req,res){
     const customer = await Customer.findByPk(decoded.uid);
 
     if(customer == null){
-        return res.status(404).json({status:"error",data:null,message:"User not found"});
+        return res.status(404).json({status:"error",data:null,message:"Customer not found"});
     }
 
     customer.firstName = req.body.firstName;

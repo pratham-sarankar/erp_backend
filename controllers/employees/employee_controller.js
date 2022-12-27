@@ -1,8 +1,5 @@
 const Employee = require("../../models/employee");
 const Designation = require("../../models/designation")
-const TokenController = require("../token_controller");
-const EncryptionController = require('../encryption_controller');
-const {DataTypes} = require("sequelize");
 
 
 async function fetchAll(req,res){
@@ -10,6 +7,22 @@ async function fetchAll(req,res){
     const employees = await Employee.findAll();
     // Send the data.
     return res.status(200).json({status:"success",data:employees,message:"Employees fetched successfully."});
+}
+
+async function fetchOne(req,res){
+    const id = req.params.id;
+    const employee = await Employee.findByPk(id);
+    return res.status(200).json({status:"success",data:employee,message:"Employee fetched successfully."});
+}
+
+async function search(req,res){
+    const filters = req.query;
+    const employees = await Employee.findAll({where:filters});
+    res.status(200).json({
+        status:"success",
+        data:employees,
+        message:"Employees searched successfully."
+    });
 }
 
 async function insertOne(req, res) {
@@ -59,7 +72,7 @@ async function insertOne(req, res) {
             await employee.setDesignation(designationId);
         }
 
-        return res.status(201).json({ status: "success", data: {employee:employee,token:null}, message: "Employee created successfully" });
+        return res.status(201).json({ status: "success", data: employee, message: "Employee created successfully" });
 
     } catch (error) {
         if (error['name'] === 'SequelizeUniqueConstraintError') {
@@ -69,36 +82,6 @@ async function insertOne(req, res) {
         console.log(error);
         return res.status(500).json({ status: "error", data: null, message: error })
     }
-}
-
-async function setDesignation(req,res){
-    const uid = req.params.id;
-
-    const designationId = req.body.designationId;
-
-    const employee = await Employee.findByPk(uid).catch(reason => res.status(404).json({status:"error",data:reason,message:"Employee not found"}))
-    if(employee==null)return
-
-    const designation = await Designation.findByPk(designationId).catch(reason => res.status(404).json({status:"error",data:reason,message:"Designation not found"}));
-    if(designation==null)return
-
-    await employee.setDesignation(designation);
-
-    return res.status(200).json({status:"success",data:employee,message:"Successfully assigned the designation to the employee"});
-}
-
-async function uploadProfilePicture(req,res){
-    const employeeId = req.params.id;
-    const key = req.key;
-
-    const employee = await Employee.findByPk(employeeId);
-    employee.photoUrl = key;
-    await employee.save();
-    return res.status(200).json({status:"success",data:employee,message:"Profile picture uploaded"});
-}
-
-async function sendProfilePicture(req,res){
-    return req.stream.pipe(res);
 }
 
 async function updateOne(req,res){
@@ -129,29 +112,24 @@ async function updateOne(req,res){
 
     try{
         await employee.save();
-        if(designationId!=null){
-            await employee.setDesignation(designationId);
-        }
+        await employee.setDesignation(designationId);
     }catch (e){
         return res.status(500).json({status:"error",data:null,message:e.errors[0].message})
     }
     return res.status(200).json({status:"success",data:employee,message:"Employee updated successfully."});
 }
 
-async function deleteEmployee(req,res){
+async function deleteOne(req,res){
     const id = req.params.id;
-
     try{
         await Employee.destroy({where:{id:id}})
         return res.status(200).json({status:"success",data:null,message:"Employee deleted successfully."});
     }catch (e) {
         return res.status(500).json({status:"error",data:e,message:"An error occurred"});
     }
-
-
 }
 
-async function deleteEmployees(req,res){
+async function deleteMany(req,res){
     const ids = req.query.ids;
     console.log(ids);
     try{
@@ -163,4 +141,4 @@ async function deleteEmployees(req,res){
     }
 }
 
-module.exports = {fetchAll,insertOne,uploadProfilePicture,sendProfilePicture, setDesignation, updateOne,deleteEmployee,deleteEmployees};
+module.exports = {fetchAll,fetchOne,insertOne,updateOne,search,deleteMany,deleteOne};

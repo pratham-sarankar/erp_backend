@@ -12,6 +12,13 @@ const User = sequelize.define("user",
     },
     {
         sequelize,
+        scopes:{
+            withoutPassword:{
+                attributes:{
+                    exclude : "password"
+                }
+            }
+        }
     },
 );
 
