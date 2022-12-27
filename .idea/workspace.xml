@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="22 Dec Update">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/employees/designation_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/designation_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/users/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users/user_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/aws_s3_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/aws_s3_middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/multer_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/multer_middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/designation.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/designation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/employee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/customers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/employees.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/files.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTTP Request" />
+        <option value="HTTP Private Environment File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HnyxqgMgNkVBwObeeYJfhUxyUk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.9.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.11.9&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/prathamsarankar/Documents/express_projects/erp_backend&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/controllers" />
+      <recent name="$PROJECT_DIR$/models" />
+      <recent name="$PROJECT_DIR$/config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/controllers/employees" />
+      <recent name="$PROJECT_DIR$/controllers/shop" />
+      <recent name="$PROJECT_DIR$/controllers/customers" />
+      <recent name="$PROJECT_DIR$/controllers/classes" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="erp_backend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="erp_backend" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in fetchAll" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" path="$PROJECT_DIR$/controllers/fetchAll.http">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="" />
+      <created>1668935393098</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668935393098</updated>
+      <workItem from="1668935395335" duration="5894000" />
+      <workItem from="1669034543914" duration="67000" />
+      <workItem from="1669034620322" duration="6000" />
+      <workItem from="1669160756703" duration="3554000" />
+      <workItem from="1669180213809" duration="2602000" />
+      <workItem from="1669191792620" duration="1297000" />
+      <workItem from="1669207205324" duration="1227000" />
+      <workItem from="1669210276137" duration="6591000" />
+      <workItem from="1669356885234" duration="391000" />
+      <workItem from="1669357281082" duration="50000" />
+      <workItem from="1669388076519" duration="2126000" />
+      <workItem from="1669441207293" duration="872000" />
+      <workItem from="1669462893376" duration="15000" />
+      <workItem from="1669467063343" duration="1668000" />
+      <workItem from="1669477506459" duration="169000" />
+      <workItem from="1669477680362" duration="20000" />
+      <workItem from="1669477704944" duration="6518000" />
+      <workItem from="1669484474373" duration="3579000" />
+      <workItem from="1669525538677" duration="7574000" />
+      <workItem from="1669561464608" duration="614000" />
+      <workItem from="1669642361349" duration="1128000" />
+      <workItem from="1669709189021" duration="10678000" />
+      <workItem from="1669729864391" duration="2972000" />
+      <workItem from="1669743208556" duration="74000" />
+      <workItem from="1669743295784" duration="605000" />
+      <workItem from="1669745428088" duration="457000" />
+      <workItem from="1669794358745" duration="2895000" />
+      <workItem from="1669802914031" duration="5182000" />
+      <workItem from="1669893427314" duration="1975000" />
+      <workItem from="1669986266478" duration="22875000" />
+      <workItem from="1670421366993" duration="3310000" />
+      <workItem from="1670462346205" duration="12953000" />
+      <workItem from="1670668194930" duration="1138000" />
+      <workItem from="1670669650487" duration="1804000" />
+      <workItem from="1670686432094" duration="65858000" />
+      <workItem from="1671113058686" duration="3600000" />
+      <workItem from="1671182900306" duration="6611000" />
+      <workItem from="1671270131813" duration="5787000" />
+      <workItem from="1671427405314" duration="5209000" />
+      <workItem from="1671515844848" duration="296000" />
+      <workItem from="1671535380503" duration="2007000" />
+      <workItem from="1671539038025" duration="1315000" />
+      <workItem from="1671559484499" duration="9498000" />
+      <workItem from="1671625847614" duration="625000" />
+      <workItem from="1671634869846" duration="2248000" />
+      <workItem from="1671648340475" duration="7071000" />
+      <workItem from="1671726006273" duration="7283000" />
+      <workItem from="1671793362436" duration="1872000" />
+      <workItem from="1671977599194" duration="1710000" />
+      <workItem from="1671980457917" duration="72000" />
+      <workItem from="1671980565930" duration="12362000" />
+      <workItem from="1672037173868" duration="20772000" />
+    </task>
+    <task id="LOCAL-00001" summary="database hosted">
+      <created>1669489411691</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669489411691</updated>
+    </task>
+    <task id="LOCAL-00002" summary="port changed">
+      <created>1669489704992</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669489704992</updated>
+    </task>
+    <task id="LOCAL-00003" summary="user fetchOne created">
+      <created>1669532288199</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669532288199</updated>
+    </task>
+    <task id="LOCAL-00004" summary="user fetchOne created">
+      <created>1669537245144</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669537245144</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update user details">
+      <created>1669725227529</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669725227530</updated>
+    </task>
+    <task id="LOCAL-00006" summary="16 Dec Update">
+      <created>1671209641966</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671209641966</updated>
+    </task>
+    <task id="LOCAL-00007" summary="16 Dec Update">
+      <created>1671210042238</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671210042238</updated>
+    </task>
+    <task id="LOCAL-00008" summary="20 Dec Update">
+      <created>1671539055003</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1671539055003</updated>
+    </task>
+    <task id="LOCAL-00009" summary="22 Dec Update">
+      <created>1671647479423</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671647479424</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="database hosted" />
+    <MESSAGE value="port changed" />
+    <MESSAGE value="user fetchOne created" />
+    <MESSAGE value="update user details" />
+    <MESSAGE value="16 Dec Update" />
+    <MESSAGE value="20 Dec Update" />
+    <MESSAGE value="22 Dec Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="22 Dec Update" />
+  </component>
+</project>
