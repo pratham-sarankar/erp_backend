@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const UserController = require("../controllers/users/user_controller");
 
+router.post("/login",async function(req,res){
+    return await UserController.login(req,res);
+});
 
 router.post("/",async function(req,res){
     return await UserController.insertOne(req,res);

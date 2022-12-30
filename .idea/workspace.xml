@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="22 Dec Update">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="27 Dec Update">
+      <change afterPath="$PROJECT_DIR$/controllers/branch_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/branch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/course.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/branch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/course.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/employees/designation_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/designation_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/users/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users/user_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/aws_s3_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/aws_s3_middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/multer_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/multer_middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/designation.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/designation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/employee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/users/user_group_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users/user_group_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/customers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/employees.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employees.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/files.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,25 +45,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.9.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.11.9&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/prathamsarankar/Documents/express_projects/erp_backend&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "javascript.nodejs.core.library.configured.version": "18.9.0",
+    "javascript.nodejs.core.library.typings.version": "18.11.9",
+    "last_opened_file_path": "/Users/prathamsarankar/Documents/express_projects/erp_backend",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "show.migrate.to.gradle.popup": "false",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/controllers" />
@@ -157,7 +154,9 @@
       <workItem from="1671977599194" duration="1710000" />
       <workItem from="1671980457917" duration="72000" />
       <workItem from="1671980565930" duration="12362000" />
-      <workItem from="1672037173868" duration="20772000" />
+      <workItem from="1672037173868" duration="26392000" />
+      <workItem from="1672205755502" duration="3713000" />
+      <workItem from="1672277082196" duration="21878000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
@@ -222,7 +221,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671647479424</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="27 Dec Update">
+      <created>1672162513387</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1672162513387</updated>
+    </task>
+    <task id="LOCAL-00011" summary="27 Dec Update">
+      <created>1672162800617</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1672162800617</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +261,7 @@
     <MESSAGE value="16 Dec Update" />
     <MESSAGE value="20 Dec Update" />
     <MESSAGE value="22 Dec Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="22 Dec Update" />
+    <MESSAGE value="27 Dec Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="27 Dec Update" />
   </component>
 </project>

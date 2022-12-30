@@ -1,6 +1,7 @@
 const Customer = require("../../models/customer");
 const TokenController = require("../token_controller");
 const EncryptionController = require('../encryption_controller');
+const Employee = require("../../models/employee");
 
 
 async function register(req, res) {
@@ -105,8 +106,28 @@ async function fetchOne(req,res){
 
 async function fetchAll(req,res){
     const customers =await Customer.scope("withoutPassword").findAll();
-    console.log(customers);
     return res.status(200).json({status:"success",data:customers,message:"Customers fetched successfully"});
+}
+
+async function updateOne(req,res){
+    const id = req.params.id;
+
+    const customer = Customer.findByPk(id);
+
+    if(customer == null){
+        return res.status(404).json({status:"error",data:null,message:"Customer not found"});
+    }
+
+    customer.firstName = req.body.firstName;
+    customer.lastName = req.body.lastName;
+    customer.username = req.body.username;
+    customer.email = req.body.email;
+    customer.phoneNumber = req.body.phoneNumber;
+    customer.password = EncryptionController.encryptPassword(req.body.password);
+
+    await customer.save();
+
+    return res.status(200).json({status:"success",data:null,message:"Customer updated successfully."});
 }
 
 async function updateDetails(req,res){
@@ -125,7 +146,6 @@ async function updateDetails(req,res){
     customer.username = req.body.username;
     customer.email = req.body.email;
     customer.phoneNumber = req.body.phoneNumber;
-
     //Updating the password.
     await customer.save();
 
@@ -157,4 +177,26 @@ async function updatePassword(req,res){
     return res.status(200).json({status:"success",data:null,message:"Password updated successfully."});
 }
 
-module.exports = { register, login, fetchOne,fetchAll, updatePassword, updateDetails }
+async function deleteOne(req,res){
+    const id = req.params.id;
+    try{
+        const customer = await Customer.findByPk(id);
+        await customer.destroy();
+        res.status(200).json({status:"success",data:null,message:"Customer deleted successfully."});
+    }catch (e) {
+        res.status(500).json({status:"error",data:null,message:"An error occurred"});
+    }
+}
+
+async function deleteMany(req, res) {
+    const ids = req.query.ids;
+    try {
+        await Customer.destroy({where: {id: ids}})
+        return res.status(200).json({status: "success", data: null, message: "Customers deleted successfully."});
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({status: "error", data: e, message: "An error occurred"});
+    }
+}
+
+module.exports = { register, login, fetchOne,fetchAll,updateOne, updatePassword, updateDetails,deleteOne,deleteMany }

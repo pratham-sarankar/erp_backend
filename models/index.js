@@ -5,6 +5,41 @@ const Designation = require("./designation")
 const Class = require("./class");
 const Employee = require("./employee")
 const UserGroup = require("./user_group");
+const Branch = require("./branch");
+const Customer = require("./customer");
+const Course = require("./course");
+
+//Branch and employee
+Branch.hasMany(Employee,{
+    foreignKey:"branch_id",
+})
+Employee.belongsTo(Branch,{
+    foreignKey:"branch_id",
+});
+
+//Branch and customer
+Branch.hasMany(Customer,{
+    foreignKey:"branch_id",
+})
+Customer.belongsTo(Branch,{
+    foreignKey:"branch_id",
+});
+
+//Branch and class
+Branch.hasMany(Class,{
+    foreignKey:"branch_id",
+})
+Class.belongsTo(Branch,{
+    foreignKey:"branch_id",
+});
+
+//Branch and course
+Branch.hasMany(Course,{
+    foreignKey:"branch_id",
+})
+Course.belongsTo(Branch,{
+    foreignKey:"branch_id",
+});
 
 //User and employee
 Employee.hasMany(User,{

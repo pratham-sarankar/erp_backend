@@ -1,27 +1,28 @@
 const Employee = require("../../models/employee");
-const Designation = require("../../models/designation")
+const Designation = require("../../models/designation");
+const Branch = require("../../models/branch");
 
 
-async function fetchAll(req,res){
+async function fetchAll(req, res) {
     // Fetch All the employees.
     const employees = await Employee.findAll();
     // Send the data.
-    return res.status(200).json({status:"success",data:employees,message:"Employees fetched successfully."});
+    return res.status(200).json({status: "success", data: employees, message: "Employees fetched successfully."});
 }
 
-async function fetchOne(req,res){
+async function fetchOne(req, res) {
     const id = req.params.id;
     const employee = await Employee.findByPk(id);
-    return res.status(200).json({status:"success",data:employee,message:"Employee fetched successfully."});
+    return res.status(200).json({status: "success", data: employee, message: "Employee fetched successfully."});
 }
 
-async function search(req,res){
+async function search(req, res) {
     const filters = req.query;
-    const employees = await Employee.findAll({where:filters});
+    const employees = await Employee.findAll({where: filters});
     res.status(200).json({
-        status:"success",
-        data:employees,
-        message:"Employees searched successfully."
+        status: "success",
+        data: employees,
+        message: "Employees searched successfully."
     });
 }
 
@@ -40,51 +41,51 @@ async function insertOne(req, res) {
     try {
 
         //At least one of phone number and email is required.
-        if(email==null&&phoneNumber==null){
+        if (email == null && phoneNumber == null) {
             return res.status(400).json({
-                status:"error",
-                data:null,
-                message:"A unique Email or Phone number is required to register a new employee."
+                status: "error",
+                data: null,
+                message: "A unique Email or Phone number is required to register a new employee."
             })
         }
 
         //Find designation or throw 404 error.
-        if(designationId!=null){
+        if (designationId != null) {
             const designation = await Designation.findByPk(designationId);
-            if(designation==null)
-                return res.status(404).json({status:"error",data:null,message:"Designation not found"});
+            if (designation == null)
+                return res.status(404).json({status: "error", data: null, message: "Designation not found"});
         }
 
         //Created(Built and Saved) the employee in the database.
         const employee = await Employee.create(
             {
-                firstName :  firstName,
-                lastName : lastName,
-                photoUrl : photoUrl,
-                idUrl :  idUrl,
-                certUrl :  certUrl,
-                dob :  dob,
-                email :  email,
-                phoneNumber :  phoneNumber,
-        });
+                firstName: firstName,
+                lastName: lastName,
+                photoUrl: photoUrl,
+                idUrl: idUrl,
+                certUrl: certUrl,
+                dob: dob,
+                email: email,
+                phoneNumber: phoneNumber,
+            });
 
-        if(designationId!=null){
+        if (designationId != null) {
             await employee.setDesignation(designationId);
         }
 
-        return res.status(201).json({ status: "success", data: employee, message: "Employee created successfully" });
+        return res.status(201).json({status: "success", data: employee, message: "Employee created successfully"});
 
     } catch (error) {
         if (error['name'] === 'SequelizeUniqueConstraintError') {
             const message = `Employee already exist with the given ${error.errors[0].path}.`;
-            return res.status(403).json({ status: "error", data: null, message: message });
+            return res.status(403).json({status: "error", data: null, message: message});
         }
         console.log(error);
-        return res.status(500).json({ status: "error", data: null, message: error })
+        return res.status(500).json({status: "error", data: null, message: error})
     }
 }
 
-async function updateOne(req,res){
+async function updateOne(req, res) {
     const id = req.params.id;
 
     const firstName = req.body.firstName;
@@ -98,8 +99,12 @@ async function updateOne(req,res){
     const designationId = req.body.designation_id;
 
 
-    const employee = await Employee.findByPk(id).catch(reason =>  res.status(404).json({status:"error",data:reason,message:"Employee not found"}));
-    if(employee==null)return;
+    const employee = await Employee.findByPk(id).catch(reason => res.status(404).json({
+        status: "error",
+        data: reason,
+        message: "Employee not found"
+    }));
+    if (employee == null) return;
 
     employee.firstName = firstName;
     employee.lastName = lastName;
@@ -110,35 +115,35 @@ async function updateOne(req,res){
     employee.idUrl = idUrl;
     employee.certUrl = certUrl;
 
-    try{
+    try {
         await employee.save();
         await employee.setDesignation(designationId);
-    }catch (e){
-        return res.status(500).json({status:"error",data:null,message:e.errors[0].message})
+    } catch (e) {
+        return res.status(500).json({status: "error", data: null, message: e.errors[0].message})
     }
-    return res.status(200).json({status:"success",data:employee,message:"Employee updated successfully."});
+    return res.status(200).json({status: "success", data: employee, message: "Employee updated successfully."});
 }
 
-async function deleteOne(req,res){
+async function deleteOne(req, res) {
     const id = req.params.id;
-    try{
-        await Employee.destroy({where:{id:id}})
-        return res.status(200).json({status:"success",data:null,message:"Employee deleted successfully."});
-    }catch (e) {
-        return res.status(500).json({status:"error",data:e,message:"An error occurred"});
+    try {
+        await Employee.destroy({where: {id: id}})
+        return res.status(200).json({status: "success", data: null, message: "Employee deleted successfully."});
+    } catch (e) {
+        return res.status(500).json({status: "error", data: e, message: "An error occurred"});
     }
 }
 
-async function deleteMany(req,res){
+async function deleteMany(req, res) {
     const ids = req.query.ids;
-    console.log(ids);
-    try{
-        await Employee.destroy({where:{id:ids}})
-        return res.status(200).json({status:"success",data:null,message:"Employees deleted successfully."});
-    }catch (e) {
+    try {
+        await Employee.destroy({where: {id: ids}})
+        return res.status(200).json({status: "success", data: null, message: "Employees deleted successfully."});
+    } catch (e) {
         console.log(e);
-        return res.status(500).json({status:"error",data:e,message:"An error occurred"});
+        return res.status(500).json({status: "error", data: e, message: "An error occurred"});
     }
 }
 
-module.exports = {fetchAll,fetchOne,insertOne,updateOne,search,deleteMany,deleteOne};
+
+module.exports = {fetchAll, fetchOne, insertOne, updateOne, search, deleteMany, deleteOne};

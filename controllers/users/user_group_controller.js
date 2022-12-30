@@ -49,11 +49,12 @@ async function updateOne(req,res){
 
     try{
         const group = await UserGroup.findByPk(id);
+        if(group==null)res.status(404).json({status:"error",data:null,message:"User group doesn't exist."});
         group.name = name;
         await group.save();
         res.status(200).json({status:"success",data:group,message:"User group updated successfully."});
     }catch (error) {
-        res.status(404).json({status:"error",data:error,message:"An error occurred"});
+        res.status(500).json({status:"error",data:error,message:"An error occurred"});
     }
 }
 
