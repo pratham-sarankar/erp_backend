@@ -38,6 +38,7 @@ async function fetchOneWithUsers(req,res){
         console.log(userGroup);
         res.status(200).json({status:"success",data:userGroup,message:"User group fetched successfully."});
     }catch (error) {
+        console.log(error);
         res.status(404).json({status:"error",data:error,message:"An error occurred"});
     }
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const UserGroupController = require("../controllers/users/user_group_controller");
+const UserGroupController = require("../../controllers/users/user_group_controller");
 // const TokenMiddleware = require("../middlewares/token_middlewares");
 
 router.post("/", async (req, res) => {

@@ -71,7 +71,7 @@ async function fetchOne(req,res){
     let user;
     try{
         const id = req.params.id;
-        user = await User.scope('withoutPassword').findByPk(id,{include:Employee});
+        user = await User.scope('withoutPassword').findByPk(id,{include:UserGroup});
         if(user==null){
             return res.status(404).json({status:"error",data:user,message:"User not found"});
         }

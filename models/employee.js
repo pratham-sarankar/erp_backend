@@ -1,5 +1,5 @@
 const sequelize = require('../config/database')
-const { DataTypes } = require('sequelize');
+const {DataTypes} = require('sequelize');
 
 
 const Employee = sequelize.define("employee",
@@ -10,26 +10,38 @@ const Employee = sequelize.define("employee",
         lastName: {
             type: DataTypes.STRING(50),
         },
-        photoUrl:{
+        photoUrl: {
             type: DataTypes.STRING(255),
+            validate: {
+                isUrl: true,
+            }
         },
         phoneNumber: {
             type: DataTypes.STRING(20),
             unique: true,
 
         },
-        dob:{
+        dob: {
             type: DataTypes.DATEONLY,
         },
         email: {
             type: DataTypes.STRING(50),
             unique: true,
+            validate: {
+                isEmail: true,
+            }
         },
-        idUrl:{
+        idUrl: {
             type: DataTypes.STRING(255),
+            validate: {
+                isUrl: true,
+            }
         },
-        certUrl:{
+        certUrl: {
             type: DataTypes.STRING(255),
+            validate: {
+                isUrl: true,
+            }
         },
     },
     {

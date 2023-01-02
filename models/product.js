@@ -9,9 +9,15 @@ const Product = sequelize.define("product",
         },
         photoUrl:{
             type:DataTypes.STRING(255),
+            validate: {
+                isUrl: true,
+            }
         },
         price:{
             type:DataTypes.INTEGER,
+            validate: {
+                isNumeric: true,
+            }
         },
         discount:{
             type:DataTypes.DOUBLE,

@@ -77,3 +77,7 @@ Class.belongsToMany(Tag,
 Tag.belongsToMany(Class,
     {through:"class_tags"},
 );
+
+
+//Course and Tags relation
+
