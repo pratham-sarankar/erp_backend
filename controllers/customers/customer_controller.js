@@ -74,9 +74,10 @@ async function login(req, res,next) {
         //Generate new token for the customer.
         const token = TokenController.generateNewToken(customer);
 
+        delete customer.dataValues.password;
         return res.status(200).json({
             status: "success",
-            data: {customer: customer.scope("excludePassword"), token: token},
+            data: {customer: customer, token: token},
             message: "Login successful"
         });
 

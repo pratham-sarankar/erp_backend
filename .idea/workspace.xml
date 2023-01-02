@@ -2,38 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="30 Dec update">
-      <change afterPath="$PROJECT_DIR$/controllers/course_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middlewares/query_middlware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/class/class.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/employees/designation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/employees/employees.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/branch_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/branch_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/classes/class_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/class_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/classes/tag_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/tag_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/employees/designation_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/designation_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/users/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users/user_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/users/user_group_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users/user_group_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/class.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/course.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/customer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/employee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/branch.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/branch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/class.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/course.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/customers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/designation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/employees.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/class/tag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_group.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users/user_group.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +159,7 @@
       <workItem from="1672489566383" duration="605000" />
       <workItem from="1672496851516" duration="352000" />
       <workItem from="1672498570729" duration="1637000" />
-      <workItem from="1672503976563" duration="33115000" />
+      <workItem from="1672503976563" duration="33756000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
