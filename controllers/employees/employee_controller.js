@@ -3,30 +3,7 @@ const Designation = require("../../models/designation");
 const Branch = require("../../models/branch");
 
 
-async function fetchAll(req, res) {
-    // Fetch All the employees.
-    const employees = await Employee.findAll();
-    // Send the data.
-    return res.status(200).json({status: "success", data: employees, message: "Employees fetched successfully."});
-}
-
-async function fetchOne(req, res) {
-    const id = req.params.id;
-    const employee = await Employee.findByPk(id);
-    return res.status(200).json({status: "success", data: employee, message: "Employee fetched successfully."});
-}
-
-async function search(req, res) {
-    const filters = req.query;
-    const employees = await Employee.findAll({where: filters});
-    res.status(200).json({
-        status: "success",
-        data: employees,
-        message: "Employees searched successfully."
-    });
-}
-
-async function insertOne(req, res) {
+async function insert(req, res) {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const photoUrl = req.body.photoUrl;
@@ -52,22 +29,11 @@ async function insertOne(req, res) {
         //Find designation or throw 404 error.
         if (designationId != null) {
             const designation = await Designation.findByPk(designationId);
-            if (designation == null)
-                return res.status(404).json({status: "error", data: null, message: "Designation not found"});
+            if (designation == null) return res.status(404).json({status: "error", data: null, message: "Designation not found"});
         }
 
         //Created(Built and Saved) the employee in the database.
-        const employee = await Employee.create(
-            {
-                firstName: firstName,
-                lastName: lastName,
-                photoUrl: photoUrl,
-                idUrl: idUrl,
-                certUrl: certUrl,
-                dob: dob,
-                email: email,
-                phoneNumber: phoneNumber,
-            });
+        const employee = await Employee.create(req.body);
 
         if (designationId != null) {
             await employee.setDesignation(designationId);
@@ -85,7 +51,33 @@ async function insertOne(req, res) {
     }
 }
 
-async function updateOne(req, res) {
+async function fetchOne(req, res) {
+    const id = req.params.id;
+    const employee = await Employee.findByPk(id);
+    return res.status(200).json({status: "success", data: employee, message: "Employee fetched successfully."});
+}
+
+
+async function fetchAll(req, res) {
+    // Fetch All the employees.
+    const employees = await Employee.findAll();
+    // Send the data.
+    return res.status(200).json({status: "success", data: employees, message: "Employees fetched successfully."});
+}
+
+
+async function search(req, res) {
+    const filters = req.query;
+    Employee.find
+    const employees = await Employee.findAll({where: filters});
+    res.status(200).json({
+        status: "success",
+        data: employees,
+        message: "Employees searched successfully."
+    });
+}
+
+async function update(req, res) {
     const id = req.params.id;
 
     const firstName = req.body.firstName;
@@ -124,7 +116,7 @@ async function updateOne(req, res) {
     return res.status(200).json({status: "success", data: employee, message: "Employee updated successfully."});
 }
 
-async function deleteOne(req, res) {
+async function destroy(req, res) {
     const id = req.params.id;
     try {
         await Employee.destroy({where: {id: id}})
@@ -134,7 +126,7 @@ async function deleteOne(req, res) {
     }
 }
 
-async function deleteMany(req, res) {
+async function destroyMany(req, res) {
     const ids = req.query.ids;
     try {
         await Employee.destroy({where: {id: ids}})
@@ -146,4 +138,4 @@ async function deleteMany(req, res) {
 }
 
 
-module.exports = {fetchAll, fetchOne, insertOne, updateOne, search, deleteMany, deleteOne};
+module.exports = {insert, fetchOne, fetchAll, search, update, destroy, destroyMany};

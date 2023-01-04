@@ -2,72 +2,77 @@ const Employee = require("../../models/employee");
 const Designation = require("../../models/designation")
 const sequelize = require("../../config/database");
 
-async function insertOne(req,res){
+async function insert(req, res, next) {
     const name = req.body.name;
-    let designation;
     try {
-        if(name===null||name===undefined){
-            return res.status(400).json({status:"error",data:null,message:"Invalid Designation."});
+        if (name === null || name === undefined) {
+            return res.status(400).json({status: "error", data: null, message: "Invalid Designation."});
         }
-        designation = await Designation.create({name: name})
-    }catch (e) {
-        return res.status(500).json({status:"error",data:e,message:"An error occured"});
+        const designation = await Designation.create({name: name})
+        res.status(201).json({status: "success", data: designation, message: "Designation created successfully."});
+    } catch (err) {
+        next(err);
     }
-    res.status(201).json({status:"success",data:designation,message:"Designation created successfully."});
 }
 
-async function fetchAll(req,res){
-    let designations;
-    try{
-        designations = await Designation.findAll({
-            attributes: ["id","name",[sequelize.fn('COUNT', sequelize.col('employees.id')), 'employees_count']],
+async function fetchAll(req, res, next) {
+    try {
+        const designations = await Designation.findAll({
+            attributes: ["id", "name", [sequelize.fn('COUNT', sequelize.col('employees.id')), 'employees_count']],
             include: {
                 model: Employee,
-                attributes:[]
+                attributes: []
             },
             group: ['id']
         });
-    }catch (e) {
-        return res.status(500).json({status:"error",data:e,message:"An error occured"});
+        res.status(200).json({status: "success", data: designations, message: "Designations fetched successfully."});
+    } catch (err) {
+        next(err);
     }
-    res.status(200).json({status:"success",data:designations,message:"Designations fetched successfully."});
 }
 
-async function fetchOneWithEmployees(req,res){
+async function fetchOne(req, res, next) {
     const groupId = req.params.id;
 
-    try{
-        const designation = await Designation.findByPk(groupId,{include:{model:Employee}});
-        console.log(designation);
-        res.status(200).json({status:"success",data:designation,message:"Designation fetched successfully."});
-    }catch (error) {
-        res.status(404).json({status:"error",data:error,message:"An error occurred"});
+    try {
+        const designation = await Designation.findByPk(groupId, {include: {model: Employee}});
+        res.status(200).json({status: "success", data: designation, message: "Designation fetched successfully."});
+    } catch (err) {
+        next(err);
     }
 
 }
 
-async function updateOne(req,res){
+async function update(req, res) {
     const id = req.params.id;
-    const name = req.body.name;
 
-    try{
-        const designation = await Designation.findByPk(id);
-        designation.name = name;
-        await designation.save();
-        res.status(200).json({status:"success",data:designation,message:"Designation updated successfully."});
-    }catch (error) {
-        res.status(404).json({status:"error",data:error,message:"An error occurred"});
+    try {
+        const result = await Designation.update({...req.body},{where:{id:id}});
+        res.status(200).json({status: "success", data: result, message: "Designation updated successfully."});
+    } catch (error) {
+        res.status(404).json({status: "error", data: error, message: "An error occurred"});
     }
 }
 
-async function deleteOne(req,res){
+async function destroy(req, res) {
     const id = req.params.id;
-    try{
-        await Designation.destroy({where:{id:id}});
-        res.status(202).json({status:"success",data:null,message:"Designation deleted successfully."});
-    }catch (error) {
-        res.status(500).json({status:"error",data:error,message:"An error occurred"});
+    try {
+        await Designation.destroy({where: {id: id}});
+        res.status(202).json({status: "success", data: null, message: "Designation deleted successfully."});
+    } catch (error) {
+        res.status(500).json({status: "error", data: error, message: "An error occurred"});
     }
 }
 
-module.exports = {insertOne,fetchAll,fetchOneWithEmployees,updateOne,deleteOne};
+async function destroyMany(req, res, next) {
+    const ids = req.query;
+
+    try {
+        await Designation.destroy({where: {id: ids}});
+        res.status(202).json({status: "success", data: null, message: "Designations deleted successfully"});
+    } catch (e) {
+        next(e);
+    }
+}
+
+module.exports = {insert, fetchOne, fetchAll, update, destroy, destroyMany};
