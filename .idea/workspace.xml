@@ -1,43 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="30 Dec update">
-      <change afterPath="$PROJECT_DIR$/controllers/payment_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/users/permission_group_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middlewares/router_middleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/payment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/payments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/users/permission_group.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/branch_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/branch_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/classes/class_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/class_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/course_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/course_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/employees/designation_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/designation_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/encryption_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/encryption_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/users/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users/user_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/users/user_group_controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/query_middlware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/query_middlware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/token_middlewares.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/token_middlewares.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/class.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/course.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/customer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/employee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user_group.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/permission_group.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/branch.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/branch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/course.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/customers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/employees/designation.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employees/designation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/employees/employees.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employees/employees.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users/user_group.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users/users.js" afterDir="false" />
-    </list>
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="30 Dec update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,7 +172,7 @@
       <workItem from="1673116561618" duration="5000" />
       <workItem from="1673150498551" duration="3579000" />
       <workItem from="1673237033322" duration="5170000" />
-      <workItem from="1673284761677" duration="10246000" />
+      <workItem from="1673284761677" duration="10571000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
