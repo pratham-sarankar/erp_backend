@@ -54,6 +54,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -203,7 +208,7 @@
       <workItem from="1673116561618" duration="5000" />
       <workItem from="1673150498551" duration="3579000" />
       <workItem from="1673237033322" duration="5170000" />
-      <workItem from="1673284761677" duration="9543000" />
+      <workItem from="1673284761677" duration="10246000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
