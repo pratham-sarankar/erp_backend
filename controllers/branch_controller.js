@@ -40,7 +40,7 @@ async function fetchOne(req, res, next) {
     }
 }
 
-async function fetchAll(req, res, next) {
+async function fetch(req, res, next) {
     try {
         let branches = await Branch.findAll();
         const employeesCount = await Branch.findAll({
@@ -104,4 +104,4 @@ async function destroyMany(req, res, next) {
     }
 }
 
-module.exports = {insert, fetchAll, fetchOne, update, destroy, destroyMany};
+module.exports = {insert, fetch, fetchOne, update, destroy, destroyMany};

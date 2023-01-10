@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Controller = require("../controllers/course_controller");
+const Controller = require("../controllers/payment_controller");
 
 router.post("/", Controller.insert);
 router.get("/:id", Controller.fetchOne);

@@ -15,7 +15,7 @@ async function insert(req, res, next) {
     }
 }
 
-async function fetchAll(req, res, next) {
+async function fetch(req, res, next) {
     try {
         const designations = await Designation.findAll({
             attributes: ["id", "name", [sequelize.fn('COUNT', sequelize.col('employees.id')), 'employees_count']],
@@ -75,4 +75,4 @@ async function destroyMany(req, res, next) {
     }
 }
 
-module.exports = {insert, fetchOne, fetchAll, update, destroy, destroyMany};
+module.exports = {insert, fetchOne, fetch, update, destroy, destroyMany};

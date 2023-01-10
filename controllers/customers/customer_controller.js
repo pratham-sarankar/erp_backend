@@ -22,7 +22,7 @@ async function fetchOne(req, res, next) {
     }
 }
 
-async function fetchAll(req, res, next) {
+async function fetch(req, res, next) {
     try {
         const customers = await Customer.scope("excludePassword").findAll(req.query);
         return res.status(200).json({status: "success", data: customers, message: "Customers fetched successfully"});
@@ -34,7 +34,7 @@ async function fetchAll(req, res, next) {
 async function update(req, res, next) {
     const id = req.params.id;
     try {
-        await Customer.update(req.body, {where: {id: id}});
+        await Customer.scope("excludePassword").update(req.body, {where: {id: id}});
         return res.status(200).json({status: "success", data: null, message: "Customers updated successfully"});
     } catch (err) {
         next(err);
@@ -61,16 +61,33 @@ async function destroyMany(req, res, next) {
     }
 }
 
-
 //User routes
-async function login(req, res,next) {
+async function loginWithEmailAndPassword(req, res, next) {
+    const email = req.body.email;
     try {
-        const customer = await Customer.findOne({where: {phoneNumber:req.body.phoneNumber}});
+        const customer = await Customer.findOne({where: {email: email,}});
         if (customer == null) return res.status(404).json({status: "error", data: null, message: "User not found"});
+        return login(customer, req, res, next);
+    } catch (err) {
+        next(err);
+    }
+}
 
-        const matched = EncryptionController.comparePassword(req.body.password, customer.password);
+async function loginWithPhoneNumber(req, res, next) {
+    const phoneNumber = req.body.email;
+    try {
+        const customer = await Customer.findOne({where: {phoneNumber: phoneNumber,}});
+        if (customer == null) return res.status(404).json({status: "error", data: null, message: "User not found"});
+        return login(customer, req, res, next);
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function login(customer, req, res, next) {
+    try {
+        const matched = EncryptionController.comparePassword(password, customer.password);
         if (!matched) return res.status(401).json({status: "error", data: null, message: "Incorrect password"});
-
         //Generate new token for the customer.
         const token = TokenController.generateNewToken(customer);
 
@@ -80,59 +97,19 @@ async function login(req, res,next) {
             data: {customer: customer, token: token},
             message: "Login successful"
         });
-
     } catch (err) {
         next(err);
     }
 }
 
 
-async function updateDetails(req, res) {
-    const decoded = TokenController.decodeToken(req.token);
-    console.log(decoded);
-
-    //Fetching customer with the uid found in the token.
-    const customer = await Customer.findByPk(decoded.uid);
-
-    if (customer == null) {
-        return res.status(404).json({status: "error", data: null, message: "Customer not found"});
-    }
-
-    customer.firstName = req.body.firstName;
-    customer.lastName = req.body.lastName;
-    customer.username = req.body.username;
-    customer.email = req.body.email;
-    customer.phoneNumber = req.body.phoneNumber;
-    //Updating the password.
-    await customer.save();
-
-    return res.status(200).json({status: "success", data: null, message: "Details updated successfully."});
-}
-
-async function updatePassword(req, res) {
-    const decoded = TokenController.decodeToken(req.token);
-    console.log(decoded);
-
-    //Fetching customer with the uid found in the token.
-    const customer = await Customer.findByPk(decoded.uid);
-
-    if (customer == null) {
-        return res.status(404).json({status: "error", data: null, message: "User not found"});
-    }
-    const password = req.body.password;
-    const newPassword = req.body.newPassword;
-    const matched = EncryptionController.comparePassword(password, customer.password);
-
-    if (!matched) {
-        return res.status(401).json({status: "error", data: null, message: "Incorrect Password!"})
-    }
-
-    //Updating the password.
-    customer.password = EncryptionController.encryptPassword(newPassword);
-    await customer.save();
-
-    return res.status(200).json({status: "success", data: null, message: "Password updated successfully."});
-}
-
-
-module.exports = {insert, fetchOne, fetchAll, update, destroy, destroyMany, login, updatePassword, updateDetails};
+module.exports = {
+    insert,
+    fetchOne,
+    fetch,
+    update,
+    destroy,
+    destroyMany,
+    loginWithEmailAndPassword,
+    loginWithPhoneNumber
+};

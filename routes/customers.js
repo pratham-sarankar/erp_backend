@@ -5,16 +5,15 @@ const Controller = require("../controllers/customers/customer_controller");
 
 router.post("/", Controller.insert);
 router.get("/:id", Controller.fetchOne);
-router.get("/", Controller.fetchAll);
+router.get("/", Controller.fetch);
 router.put("/:id", Controller.update);
 router.delete("/:id", Controller.destroy);
 router.delete("/", Controller.destroyMany);
 
 //Customer Routes
-router.post("/login", Controller.login);
+router.post("/login/email", Controller.loginWithEmailAndPassword);
+router.post("/login/phone", Controller.loginWithPhoneNumber);
 router.post("/register",Controller.insert);
-router.put("/",Controller.updateDetails);
-router.patch("/password",Controller.updatePassword);
 router.get("images/:key",S3Middleware.downloader,(req, res) => {
     return req.stream.pipe(res);
 });

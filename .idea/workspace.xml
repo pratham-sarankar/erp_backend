@@ -2,8 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="30 Dec update">
+      <change afterPath="$PROJECT_DIR$/controllers/payment_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/users/permission_group_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middlewares/router_middleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/payment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/payments.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/users/permission_group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/branch_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/branch_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/classes/class_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/class_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/course_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/course_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/employees/designation_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/designation_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/encryption_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/encryption_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/users/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users/user_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/users/user_group_controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/query_middlware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/query_middlware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/token_middlewares.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/token_middlewares.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/course.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/customer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/employee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user_group.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/permission_group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/branch.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/branch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/course.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/customers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/employees/designation.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employees/designation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/employees/employees.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employees/employees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users/user_group.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,26 +67,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "javascript.nodejs.core.library.configured.version": "18.9.0",
-    "javascript.nodejs.core.library.typings.version": "18.11.9",
-    "last_opened_file_path": "/Users/prathamsarankar/Documents/express_projects/erp_backend",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "rest.client.default.execution.environment": "dev",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "show.migrate.to.gradle.popup": "false",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.9.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.11.9&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/prathamsarankar/Documents/express_projects/erp_backend&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rest.client.default.execution.environment&quot;: &quot;dev&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/controllers" />
@@ -160,6 +193,17 @@
       <workItem from="1672496851516" duration="352000" />
       <workItem from="1672498570729" duration="1637000" />
       <workItem from="1672503976563" duration="33756000" />
+      <workItem from="1672687070674" duration="28000" />
+      <workItem from="1672713059885" duration="7531000" />
+      <workItem from="1672738070336" duration="20793000" />
+      <workItem from="1673003311262" duration="1346000" />
+      <workItem from="1673017461902" duration="10000" />
+      <workItem from="1673017749743" duration="1140000" />
+      <workItem from="1673062413644" duration="4822000" />
+      <workItem from="1673116561618" duration="5000" />
+      <workItem from="1673150498551" duration="3579000" />
+      <workItem from="1673237033322" duration="5170000" />
+      <workItem from="1673284761677" duration="9543000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>

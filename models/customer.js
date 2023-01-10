@@ -16,9 +16,6 @@ const Customer = sequelize.define("customer",
         },
         photoUrl: {
             type: DataTypes.STRING(255),
-            validate: {
-                isUrl: true,
-            }
         },
         email: {
             type: DataTypes.STRING(50),
@@ -32,13 +29,15 @@ const Customer = sequelize.define("customer",
             unique: true,
             allowNull: false,
         },
+        dob: {
+            type: DataTypes.DATEONLY,
+        },
         password: {
             type: DataTypes.STRING(255),
-            allowNull:false,
+            allowNull: false,
             set(value) {
                 this.setDataValue('password', EncryptionController.encryptPassword(value));
             }
-
         },
     },
     {
@@ -47,7 +46,7 @@ const Customer = sequelize.define("customer",
             excludePassword: {
                 attributes: {exclude: 'password'}
             }
-        }
+        },
     },
 );
 

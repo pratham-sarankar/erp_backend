@@ -9,9 +9,6 @@ const Class = sequelize.define("class",
         },
         photoUrl: {
             type: DataTypes.STRING(255),
-            validate:{
-                isUrl:true,
-            }
         },
         description: {
             type: DataTypes.TEXT("medium"),

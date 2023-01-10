@@ -10,13 +10,16 @@ const Course = sequelize.define("course",
         },
         photoUrl:{
             type:DataTypes.STRING(255),
-            validate:{
-                isUrl:true,
-            }
         },
         description:{
             type: DataTypes.TEXT("medium"),
         },
+        duration: {
+            type: DataTypes.DOUBLE,
+            validate:{
+                isNumeric:true,
+            }
+        }
     },
     {
         sequelize,

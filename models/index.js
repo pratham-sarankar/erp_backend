@@ -4,10 +4,11 @@ const Tag = require("./tag");
 const Designation = require("./designation")
 const Class = require("./class");
 const Employee = require("./employee")
-const UserGroup = require("./user_group");
+const PermissionGroup = require("./permission_group");
 const Branch = require("./branch");
 const Customer = require("./customer");
 const Course = require("./course");
+const Payment = require("./payment");
 
 //Branch and employee
 Branch.hasMany(Employee,{
@@ -50,11 +51,14 @@ User.belongsTo(Employee,{
 });
 
 //User and user group relation
-UserGroup.hasMany(User,{
+PermissionGroup.hasMany(User,{
     foreignKey:"group_id",
 });
-User.belongsTo(UserGroup,{
+User.belongsTo(PermissionGroup,{
     foreignKey:"group_id",
+    constraints:{
+        nullable:false,
+    }
 })
 
 
@@ -79,5 +83,6 @@ Tag.belongsToMany(Class,
 );
 
 
-//Course and Tags relation
-
+//Payment and customer relation
+Payment.belongsTo(Customer,{foreignKey:"customer_id"});
+Customer.hasMany(Payment,{foreignKey:"customer_id"});

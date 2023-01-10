@@ -58,24 +58,13 @@ async function fetchOne(req, res) {
 }
 
 
-async function fetchAll(req, res) {
+async function fetch(req, res) {
     // Fetch All the employees.
-    const employees = await Employee.findAll();
+    const employees = await Employee.findAll(req.query);
     // Send the data.
     return res.status(200).json({status: "success", data: employees, message: "Employees fetched successfully."});
 }
 
-
-async function search(req, res) {
-    const filters = req.query;
-    Employee.find
-    const employees = await Employee.findAll({where: filters});
-    res.status(200).json({
-        status: "success",
-        data: employees,
-        message: "Employees searched successfully."
-    });
-}
 
 async function update(req, res) {
     const id = req.params.id;
@@ -138,4 +127,4 @@ async function destroyMany(req, res) {
 }
 
 
-module.exports = {insert, fetchOne, fetchAll, search, update, destroy, destroyMany};
+module.exports = {insert, fetchOne, fetch, update, destroy, destroyMany};

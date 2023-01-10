@@ -20,9 +20,9 @@ async function fetchOne(req, res, next) {
     }
 }
 
-async function fetchAll(req, res, next) {
+async function fetch(req, res, next) {
     try {
-        const classes = await Course.findAndCountAll(req.query);
+        const classes = await Course.findAll(req.query);
         return res.status(200).json({status: "success", data: classes, message: "Courses fetched successfully."});
     } catch (err) {
         next(err);
@@ -64,4 +64,4 @@ async function destroyMany(req, res, next) {
 
 }
 
-module.exports = {insert, fetchOne, fetchAll, update, destroy, destroyMany};
+module.exports = {insert, fetchOne, fetch, update, destroy, destroyMany};

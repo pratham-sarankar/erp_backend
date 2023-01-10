@@ -2,7 +2,6 @@ const TokenController = require('../controllers/token_controller')
 
 function verifyToken(req,res,next){
     const bearerHeader= req.headers['authorization'];
-    console.log(req.headers);
     if(typeof bearerHeader !== 'undefined'){
         const bearer = bearerHeader.split(' ');
         const token = bearer[1];

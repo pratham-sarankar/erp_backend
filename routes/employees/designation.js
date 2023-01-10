@@ -4,7 +4,7 @@ const Controller = require("../../controllers/employees/designation_controller")
 
 router.post("/", Controller.insert);
 router.get("/:id", Controller.fetchOne);
-router.get("/", Controller.fetchAll);
+router.get("/", Controller.fetch);
 router.put("/:id", Controller.update);
 router.delete("/:id", Controller.destroy);
 router.delete("/", Controller.destroyMany);

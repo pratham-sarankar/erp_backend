@@ -2,127 +2,113 @@ const User = require("../../models/user");
 const Employee = require("../../models/employee");
 const EncryptionController = require("../encryption_controller");
 const TokenController = require("../token_controller");
-const UserGroup = require("../../models/user_group");
+const PermissionGroup = require("../../models/permission_group");
 
-async function login(req,res){
-    const username =req.body.username;
+async function insert(req, res, next) {
+    try {
+        await User.create(req.body, {include: [PermissionGroup, Employee]});
+        return res.status(200).json({status: "success", data: null, message: "User created successfully."});
+    } catch (err) {
+        next(err);
+    }
+}
+
+
+async function fetchOne(req, res, next) {
+    const id = req.params.id;
+    try {
+        const user = await User.scope('excludePassword').findByPk(id, {include: PermissionGroup});
+        if (user == null) return res.status(404).json({status: "error", data: user, message: "User not found"});
+        res.status(200).json({status: "success", data: user, message: "User fetched successfully."});
+    } catch (err) {
+        next(err);
+    }
+}
+
+
+async function fetch(req, res, next) {
+    try {
+        const users = await User.scope('excludePassword').findAll({include: [PermissionGroup, Employee], ...req.query});
+        res.status(200).json({status: "success", data: users, message: "Users fetched successfully."});
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function update(req, res, next) {
+    const id = req.params.id;
+    try {
+        await User.update(req.body, {where: {id: id}});
+        return res.status(200).json({status: "success", data: null, message: "User updated successfully."});
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function destroy(req, res, next) {
+    const id = req.params.id;
+    try {
+        await User.destroy({id: id})
+        return res.status(200).json({status: "success", data: null, message: "User deleted successfully."});
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function destroyMany(req, res, next) {
+    const ids = req.query.ids;
+    try {
+        await User.destroy({where: {id: ids}});
+        return res.status(200).json({status: "success", data: null, message: "Users deleted successfully."});
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function login(req, res, next) {
+    const username = req.body.username;
     const password = req.body.password;
 
-    try{
-        const user = await User.findOne({where:{username:username},include:Employee});
-        if(user==null) return res.status(404).json({status:"error",data:null,message:"User not found"});
+    try {
+        const user = await User.findOne({where: {username: username}, include: [Employee, PermissionGroup]});
+        if (user == null) return res.status(404).json({status: "error", data: null, message: "User not found"});
 
-        const matched = EncryptionController.comparePassword(password,user.password);
-        if(!matched) return res.status(400).json({status:"error",data:null,message:"Incorrect password."});
+        const matched = EncryptionController.comparePassword(password, user.password);
+        if (!matched) return res.status(400).json({status: "error", data: null, message: "Incorrect password."});
 
         const token = TokenController.generateNewToken(user);
-        return res.status(200).json({status:"success",data:{user:user,token:token},message:"User logged in successfully."});
-    }catch (e) {
-        return res.status(500).json({status:"error",data:null,message:"An error occurred."});
+        return res.status(200).json({
+            status: "success",
+            data: {user: user, token: token},
+            message: "User logged in successfully."
+        });
+    } catch (err) {
+        next(err);
     }
 }
 
-async function insertOne(req,res){
-    const username = req.body.username;
-    let password = req.body.password;
-    const employeeId = req.body.employee_id;
-    const groupId = req.body.group_id;
+async function updatePassword(req, res, next) {
+    const {password, newPassword} = req.body;
+    const token = req.token;
+    try {
+        const decoded = TokenController.decodeToken(token);
+        const user = await User.findByPk(decoded.uid, {include: [Employee, PermissionGroup]});
 
-    try{
-        //Find the employee or throw 404 error.
-        const employee = await Employee.findByPk(employeeId);
-        const group = await UserGroup.findByPk(groupId);
-        if(employee==null){
-            return res.status(404).json({status:"error",data:null,message:"Employee not found"});
-        }
-        if(group==null){
-            return res.status(404).json({status:"error",data:null,message:"User group not found"});
-        }
+        const matched = EncryptionController.comparePassword(password, user.password);
+        if (!matched) return res.status(401).json({status: "error", data: null, message: "Wrong password"});
 
-        //Encrypt the password
-        password = EncryptionController.encryptPassword(password);
-
-        //Create a new user.
-        const user = await User.create({username:username, password:password});
-        user.setEmployee(employee);
-        user.setUser_group(group);
+        user.password = newPassword;
         await user.save();
 
-
-        res.status(201).json({status:"success",data:user,message:"User created successfully."});
-    }catch (e) {
-        const message = e.errors[0].message??"An error occurred";
-        res.status(500).json({status:"error",data:e,message:message});
+        const newToken = TokenController.generateNewToken(user);
+        return res.status(200).json({
+            status: "success",
+            data: {user: user, token: newToken},
+            message: "Password updated successfully."
+        });
+    } catch (err) {
+        next(err);
     }
 }
 
-
-async function fetchAll(req,res){
-    let users;
-    try{
-        users = await User.scope('withoutPassword').findAll({include:Employee});
-        res.status(200).json({status:"success",data:users,message:"Users fetched successfully."});
-    }catch (e) {
-        return res.status(500).json({status:"error",data:e,message:"An error occured"});
-    }
-}
-
-async function fetchOne(req,res){
-    let user;
-    try{
-        const id = req.params.id;
-        user = await User.scope('withoutPassword').findByPk(id,{include:UserGroup});
-        if(user==null){
-            return res.status(404).json({status:"error",data:user,message:"User not found"});
-        }
-        res.status(200).json({status:"success",data:user,message:"User fetched successfully."});
-    }catch (e) {
-        return res.status(500).json({status:"error",data:e,message:"An error occurred"});
-    }
-}
-
-async function updateOne(req,res){
-    const username = req.body.username;
-    const groupId = req.body.group_id;
-    let password = req.body.password;
-    const id = req.params.id;
-    let user;
-    try{
-        user = await User.findByPk(id);
-        if(user==null){
-            return res.status(404).json({status:"error",data:user,message:"User not found."});
-        }
-        if(groupId!=null){
-            user.setUser_group(groupId);
-        }
-        if(username!=null){
-            user.username = username;
-        }
-        if(password!=null){
-            password = EncryptionController.encryptPassword(password);
-            user.password = password;
-        }
-        await user.save();
-        return res.status(200).json({status:"success",data:user,message:"User updated successfully."});
-    }catch (e) {
-        return res.status(500).json({status:"error",data:e,message:"An error occurred"});
-    }
-}
-
-async function deleteOne(req,res){
-    const id = req.params.id;
-    let user;
-    try{
-        user = await User.findByPk(id);
-        if(user==null){
-            return res.status(404).json({status:"error",data:user,message:"User not found."});
-        }
-        await user.destroy();
-        return res.status(200).json({status:"success",data:null,message:"User deleted successfully."});
-    }catch (e) {
-        return res.status(500).json({status:"error",data:e,message:"An error occurred"});
-    }
-}
-
-
-module.exports = {login,insertOne,fetchAll,fetchOne,updateOne,deleteOne};
+module.exports = {insert, fetchOne, fetch, update, destroy, destroyMany, login, updatePassword};

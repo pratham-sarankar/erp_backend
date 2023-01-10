@@ -1,10 +1,6 @@
-function queryParser(req,res,next){
-    if(req.query.limit){
-        req.query.limit = parseInt(req.query.limit.toString());
-    }
-    if(req.query.offset){
-        req.query.offset = parseInt(req.query.offset.toString());
-    }
+function queryParser(req, res, next) {
+    req.query.limit = parseInt(req.query.limit ? req.query.limit : "100");
+    req.query.offset = parseInt(req.query.offset ? req.query.offset : "0");
     next();
 }
 

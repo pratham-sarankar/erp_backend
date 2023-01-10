@@ -12,14 +12,10 @@ const Employee = sequelize.define("employee",
         },
         photoUrl: {
             type: DataTypes.STRING(255),
-            validate: {
-                isUrl: true,
-            }
         },
         phoneNumber: {
             type: DataTypes.STRING(20),
             unique: true,
-
         },
         dob: {
             type: DataTypes.DATEONLY,
@@ -33,15 +29,9 @@ const Employee = sequelize.define("employee",
         },
         idUrl: {
             type: DataTypes.STRING(255),
-            validate: {
-                isUrl: true,
-            }
         },
         certUrl: {
             type: DataTypes.STRING(255),
-            validate: {
-                isUrl: true,
-            }
         },
     },
     {

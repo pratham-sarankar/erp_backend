@@ -22,7 +22,7 @@ async function fetchOne(req, res, next) {
 
 async function fetch(req, res, next) {
     try {
-        const classes = await Class.findAndCountAll(req.query);
+        const classes = await Class.findAll(req.query);
         return res.status(200).json({status: "success", data: classes, message: "Classes fetched successfully."});
     } catch (err) {
         next(err);

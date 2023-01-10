@@ -2,7 +2,7 @@ const sequelize = require('../config/database')
 const { DataTypes } = require('sequelize');
 
 
-const UserGroup = sequelize.define("user_group",
+const PermissionGroup = sequelize.define("permission_group",
     {
         name: {
             type: DataTypes.STRING(50),
@@ -14,4 +14,4 @@ const UserGroup = sequelize.define("user_group",
     },
 );
 
-module.exports = UserGroup;
+module.exports = PermissionGroup;

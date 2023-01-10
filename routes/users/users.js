@@ -1,30 +1,22 @@
 const express = require("express");
 const router = express.Router();
 const UserController = require("../../controllers/users/user_controller");
+const Controller = require("../../controllers/users/user_controller");
+const TokenMiddleware = require("../../middlewares/token_middlewares");
 
-router.post("/login",async function(req,res){
-    return await UserController.login(req,res);
-});
 
-router.post("/",async function(req,res){
-    return await UserController.insertOne(req,res);
-});
+router.post("/login",UserController.login);
+router.put("/password",TokenMiddleware.verifyToken, UserController.updatePassword);
 
-router.get("/all",async (req,res)=>{
-    return await UserController.fetchAll(req,res);
-});
+router.post("/", Controller.insert);
+router.get("/:id", Controller.fetchOne);
+router.get("/", Controller.fetch);
+router.put("/:id", Controller.update);
+router.delete("/:id", Controller.destroy);
+router.delete("/",Controller.destroyMany);
 
-router.get("/:id",async (req, res) => {
-    return await UserController.fetchOne(req,res);
-});
 
-router.put("/:id",async (req,res)=>{
-    return await UserController.updateOne(req,res);
-});
 
-router.delete("/:id",async (req,res)=>{
-    return await UserController.deleteOne(req,res);
-});
 
 
 module.exports = router;
