@@ -8,6 +8,7 @@ const PermissionGroup = sequelize.define("permission_group",
             type: DataTypes.STRING(50),
             unique:true,
         },
+
     },
     {
         sequelize,

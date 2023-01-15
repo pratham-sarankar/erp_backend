@@ -5,7 +5,7 @@ const Class = require("../models/class");
 const Course = require("../models/course");
 const Branch = require("../models/branch");
 
-async function insert(req, res,next) {
+async function insert(req, res, next) {
     const name = req.body.name;
     const address = req.body.address;
     const phoneNumber = req.body.phoneNumber;
@@ -53,8 +53,24 @@ async function fetch(req, res, next) {
             include: [{model: Customer, attributes: [],},],
             group: ['id'],
         });
+        const classesCount = await Branch.findAll({
+            attributes: [[sequelize.fn('COUNT', sequelize.col('classes.id')), 'classes_count'],],
+            include: [{model: Class, attributes: [],},],
+            group: ['id'],
+        });
+        const coursesCount = await Branch.findAll({
+            attributes: [[sequelize.fn('COUNT', sequelize.col('courses.id')), 'courses_count'],],
+            include: [{model: Course, attributes: [],},],
+            group: ['id'],
+        });
         for (let i = 0; i < branches.length; i++) {
-            branches[i] = {...branches[i].toJSON(), ...employeesCount[i].toJSON(), ...customerCounts[i].toJSON()};
+            branches[i] = {
+                ...branches[i].toJSON(),
+                ...employeesCount[i].toJSON(),
+                ...customerCounts[i].toJSON(),
+                ...classesCount[i].toJSON(),
+                ...coursesCount[i].toJSON(),
+            };
         }
         return res.status(200).json({status: "success", data: branches, message: "Branches fetched successfully."});
     } catch (err) {

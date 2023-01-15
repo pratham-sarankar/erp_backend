@@ -8,10 +8,12 @@ const designationRouter = require("../routes/employees/designation");
 const classRouter = require("../routes/class/class");
 const productRouter = require("../routes/products");
 const permissionGroupRouter = require("../routes/users/permission_group");
+const permissionRouter = require("../routes/users/permission");
 const userRouter = require("../routes/users/users");
 const branchRouter = require("../routes/branch");
 const courseRouter = require("../routes/course");
 const paymentRouter = require("../routes/payments");
+const moduleRouter= require("../routes/modules");
 
 function router(app) {
     //Routers
@@ -25,10 +27,12 @@ function router(app) {
     app.use("/class", classRouter);
     app.use("/product", productRouter);
     app.use("/permission-group", permissionGroupRouter);
+    app.use("/permission",permissionRouter);
     app.use("/user", userRouter);
     app.use("/branch", branchRouter);
     app.use("/course", courseRouter);
     app.use("/payment",paymentRouter);
+    app.use("/module",moduleRouter);
 
     //Error handler
     app.use(function (err, req, res, next) {

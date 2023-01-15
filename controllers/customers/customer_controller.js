@@ -16,15 +16,23 @@ async function fetchOne(req, res, next) {
     try {
         const customer = await Customer.scope('excludePassword').findByPk(id);
         if (customer == null) return res.status(404).json({status: "error", data: null, message: "Customer not found"});
-        return res.json({status: "success", data: {customer: customer}, message: "Customer fetched successfully"});
+        return res.json({status: "success", data: customer, message: "Customer fetched successfully"});
     } catch (err) {
         next(err);
     }
 }
 
 async function fetch(req, res, next) {
+    const limit = parseInt(req.headers.limit ?? "100");
+    const offset = parseInt(req.headers.offset ?? "0");
     try {
-        const customers = await Customer.scope("excludePassword").findAll(req.query);
+        const customers = await Customer.scope("excludePassword").findAll(
+            {
+                where: req.query,
+                limit:limit,
+                offset:offset,
+            },
+        );
         return res.status(200).json({status: "success", data: customers, message: "Customers fetched successfully"});
     } catch (err) {
         next(err);

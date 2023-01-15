@@ -39,6 +39,10 @@ const Customer = sequelize.define("customer",
                 this.setDataValue('password', EncryptionController.encryptPassword(value));
             }
         },
+        branch_id:{
+            type:DataTypes.INTEGER,
+            allowNull:false,
+        }
     },
     {
         sequelize,

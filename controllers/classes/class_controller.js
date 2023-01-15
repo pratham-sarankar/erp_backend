@@ -13,7 +13,7 @@ async function fetchOne(req, res, next) {
     const id = req.params.id;
     try {
         const foundClass = await Class.findByPk(id);
-        if(foundClass==null)return res.status(404).json({status:"error",data:null,message:"Class not found."});
+        if (foundClass == null) return res.status(404).json({status: "error", data: null, message: "Class not found."});
         return res.status(200).json({status: "success", data: foundClass, message: "Class fetched successfully."});
     } catch (err) {
         return next(err);
@@ -21,8 +21,16 @@ async function fetchOne(req, res, next) {
 }
 
 async function fetch(req, res, next) {
+    const limit = parseInt(req.headers.limit ?? "100");
+    const offset = parseInt(req.headers.offset ?? "0");
     try {
-        const classes = await Class.findAll(req.query);
+        const classes = await Class.findAll(
+            {
+                where: req.query,
+                limit:limit,
+                offset:offset,
+            },
+        );
         return res.status(200).json({status: "success", data: classes, message: "Classes fetched successfully."});
     } catch (err) {
         next(err);

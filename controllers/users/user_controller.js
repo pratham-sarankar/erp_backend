@@ -3,6 +3,9 @@ const Employee = require("../../models/employee");
 const EncryptionController = require("../encryption_controller");
 const TokenController = require("../token_controller");
 const PermissionGroup = require("../../models/permission_group");
+const Permission = require("../../models/permission");
+const Module = require("../../models/module");
+const Branch = require("../../models/branch");
 
 async function insert(req, res, next) {
     try {
@@ -17,7 +20,23 @@ async function insert(req, res, next) {
 async function fetchOne(req, res, next) {
     const id = req.params.id;
     try {
-        const user = await User.scope('excludePassword').findByPk(id, {include: PermissionGroup});
+        const user = await User.scope('excludePassword').findByPk(id, {
+            include: [
+                {
+                    model: Employee,
+                    include: {
+                        model: Branch
+                    }
+                },
+                {
+                    model: PermissionGroup,
+                    include: {
+                        model: Permission,
+                        include: Module,
+                    }
+                },
+            ],
+        });
         if (user == null) return res.status(404).json({status: "error", data: user, message: "User not found"});
         res.status(200).json({status: "success", data: user, message: "User fetched successfully."});
     } catch (err) {
@@ -28,7 +47,27 @@ async function fetchOne(req, res, next) {
 
 async function fetch(req, res, next) {
     try {
-        const users = await User.scope('excludePassword').findAll({include: [PermissionGroup, Employee], ...req.query});
+        const query = req.query.branch_id ? {branch_id: req.query.branch_id} : {};
+        const employees = await Employee.findAll({where: query});
+        const ids = employees.map(value => value.id);
+        const users = await User.scope('excludePassword').findAll({
+            include: [
+                {
+                    model: Employee,
+                    include: {
+                        model: Branch
+                    }
+                },
+                {
+                    model: PermissionGroup,
+                    include: {
+                        model: Permission,
+                        include: Module,
+                    }
+                },
+            ],
+            where: {employee_id: ids}
+        });
         res.status(200).json({status: "success", data: users, message: "Users fetched successfully."});
     } catch (err) {
         next(err);
@@ -70,7 +109,24 @@ async function login(req, res, next) {
     const password = req.body.password;
 
     try {
-        const user = await User.findOne({where: {username: username}, include: [Employee, PermissionGroup]});
+        const user = await User.findOne({
+            where: {username: username}, include:
+                [
+                    {
+                        model: Employee,
+                        include: {
+                            model: Branch
+                        }
+                    },
+                    {
+                        model: PermissionGroup,
+                        include: {
+                            model: Permission,
+                            include: Module,
+                        }
+                    },
+                ],
+        });
         if (user == null) return res.status(404).json({status: "error", data: null, message: "User not found"});
 
         const matched = EncryptionController.comparePassword(password, user.password);

@@ -33,6 +33,10 @@ const Employee = sequelize.define("employee",
         certUrl: {
             type: DataTypes.STRING(255),
         },
+        branch_id:{
+            type:DataTypes.INTEGER,
+            allowNull:false,
+        }
     },
     {
         sequelize,

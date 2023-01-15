@@ -1,4 +1,5 @@
 const Payment = require("../models/payment");
+const Customer= require("../models/customer");
 
 async function insert(req, res, next) {
     try {
@@ -13,7 +14,11 @@ async function fetchOne(req, res, next) {
     const id = req.params.id;
     try {
         const foundPayment = await Payment.findByPk(id);
-        if(foundPayment==null)return res.status(404).json({status:"error",data:null,message:"Payment not found."});
+        if (foundPayment == null) return res.status(404).json({
+            status: "error",
+            data: null,
+            message: "Payment not found."
+        });
         return res.status(200).json({status: "success", data: foundPayment, message: "Payment fetched successfully."});
     } catch (err) {
         return next(err);
@@ -21,9 +26,19 @@ async function fetchOne(req, res, next) {
 }
 
 async function fetch(req, res, next) {
-    console.log(req.query);
+    const limit = parseInt(req.headers.limit ?? "100");
+    const offset = parseInt(req.headers.offset ?? "0");
     try {
-        const payments = await Payment.findAll(req.query);
+        const payments = await Payment.findAll(
+            {
+                where: req.query,
+                limit: limit,
+                offset: offset,
+                include:{
+                    model:Customer,
+                }
+            },
+        );
         return res.status(200).json({status: "success", data: payments, message: "payments fetched successfully."});
     } catch (err) {
         next(err);
@@ -46,7 +61,11 @@ async function destroy(req, res, next) {
     const id = req.params.id;
     try {
         const foundPayment = await Payment.findByPk(id);
-        if (foundPayment == null) return res.status(404).json({status: "error", data: null, message: "Payment not found."});
+        if (foundPayment == null) return res.status(404).json({
+            status: "error",
+            data: null,
+            message: "Payment not found."
+        });
         await foundPayment.destroy();
         res.status(200).json({status: "success", data: null, message: "Payment deleted successfully."});
     } catch (err) {

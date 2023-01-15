@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="30 Dec update" />
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Added user module">
+      <change afterPath="$PROJECT_DIR$/controllers/module_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/users/permission_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/permission.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/modules.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/users/permission.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/branch_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/branch_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/classes/class_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/class_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/course_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/course_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/payment_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/payment_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/users/permission_group_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users/permission_group_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/users/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users/user_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/query_middlware.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/router_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/router_middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/course.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/customer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/employee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/payment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/permission_group.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/permission_group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +200,10 @@
       <workItem from="1673116561618" duration="5000" />
       <workItem from="1673150498551" duration="3579000" />
       <workItem from="1673237033322" duration="5170000" />
-      <workItem from="1673284761677" duration="10571000" />
+      <workItem from="1673284761677" duration="16878000" />
+      <workItem from="1673453219545" duration="6554000" />
+      <workItem from="1673505200356" duration="41180000" />
+      <workItem from="1673754531931" duration="1196000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>

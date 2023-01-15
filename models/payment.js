@@ -11,6 +11,10 @@ const Payment = sequelize.define("payment",
         description: {
             type: DataTypes.TEXT("medium"),
         },
+        branch_id:{
+            type:DataTypes.INTEGER,
+            allowNull:false,
+        }
     },
     {
         sequelize,

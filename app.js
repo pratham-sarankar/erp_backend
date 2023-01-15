@@ -4,7 +4,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
-const queryParser = require("./middlewares/query_middlware");
 require('dotenv').config();
 const router = require("./middlewares/router_middleware");
 
@@ -20,7 +19,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(queryParser);
 app.use(express.static(path.join(__dirname, "public")));
 app.use(router(app));
 

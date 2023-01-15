@@ -4,15 +4,8 @@ const Branch = require("../../models/branch");
 
 
 async function insert(req, res) {
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const photoUrl = req.body.photoUrl;
-    const idUrl = req.body.idUrl;
-    const certUrl = req.body.certUrl;
-    const dob = req.body.dob;
     const email = req.body.email;
     const phoneNumber = req.body.phoneNumber;
-
     const designationId = req.body.designation_id;
 
     try {
@@ -29,7 +22,11 @@ async function insert(req, res) {
         //Find designation or throw 404 error.
         if (designationId != null) {
             const designation = await Designation.findByPk(designationId);
-            if (designation == null) return res.status(404).json({status: "error", data: null, message: "Designation not found"});
+            if (designation == null) return res.status(404).json({
+                status: "error",
+                data: null,
+                message: "Designation not found"
+            });
         }
 
         //Created(Built and Saved) the employee in the database.
@@ -59,9 +56,15 @@ async function fetchOne(req, res) {
 
 
 async function fetch(req, res) {
-    // Fetch All the employees.
-    const employees = await Employee.findAll(req.query);
-    // Send the data.
+    const limit = parseInt(req.headers.limit ?? "100");
+    const offset = parseInt(req.headers.offset ?? "0");
+    const employees = await Employee.findAll(
+        {
+            where: req.query,
+            limit: limit,
+            offset: offset,
+        },
+    );
     return res.status(200).json({status: "success", data: employees, message: "Employees fetched successfully."});
 }
 
@@ -116,7 +119,8 @@ async function destroy(req, res) {
 }
 
 async function destroyMany(req, res) {
-    const ids = req.query.ids;
+    const ids = req.body.ids;
+    console.log(ids);
     try {
         await Employee.destroy({where: {id: ids}})
         return res.status(200).json({status: "success", data: null, message: "Employees deleted successfully."});

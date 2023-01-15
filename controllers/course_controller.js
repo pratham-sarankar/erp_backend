@@ -13,7 +13,11 @@ async function fetchOne(req, res, next) {
     const id = req.params.id;
     try {
         const foundCourse = await Course.findByPk(id);
-        if(foundCourse==null)return res.status(404).json({status:"error",data:null,message:"Course not found."});
+        if (foundCourse == null) return res.status(404).json({
+            status: "error",
+            data: null,
+            message: "Course not found."
+        });
         return res.status(200).json({status: "success", data: foundCourse, message: "Course fetched successfully."});
     } catch (err) {
         return next(err);
@@ -21,8 +25,16 @@ async function fetchOne(req, res, next) {
 }
 
 async function fetch(req, res, next) {
+    const limit = parseInt(req.headers.limit ?? "100");
+    const offset = parseInt(req.headers.offset ?? "0");
     try {
-        const classes = await Course.findAll(req.query);
+        const classes = await Course.findAll(
+            {
+                where: req.query,
+                limit:limit,
+                offset:offset,
+            },
+        );
         return res.status(200).json({status: "success", data: classes, message: "Courses fetched successfully."});
     } catch (err) {
         next(err);
@@ -45,7 +57,11 @@ async function destroy(req, res, next) {
     const id = req.params.id;
     try {
         const foundCourse = await Course.findByPk(id);
-        if (foundCourse == null) return res.status(404).json({status: "error", data: null, message: "Course not found."});
+        if (foundCourse == null) return res.status(404).json({
+            status: "error",
+            data: null,
+            message: "Course not found."
+        });
         await foundCourse.destroy();
         res.status(200).json({status: "success", data: null, message: "Course deleted successfully."});
     } catch (err) {

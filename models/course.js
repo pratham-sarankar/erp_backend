@@ -19,6 +19,10 @@ const Course = sequelize.define("course",
             validate:{
                 isNumeric:true,
             }
+        },
+        branch_id:{
+            type:DataTypes.INTEGER,
+            allowNull:false,
         }
     },
     {

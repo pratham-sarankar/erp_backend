@@ -10,7 +10,7 @@ sequelize.authenticate().then(async ()=>{
     console.log("Database Connection Established");
     await sequelize.sync({
         // force:true,
-        // alter:true
+        // alter:true,
     });
 }).catch((error)=>{
     console.log(`Database Connection Failed ${error}`);
