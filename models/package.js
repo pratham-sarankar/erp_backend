@@ -2,23 +2,25 @@ const sequelize = require('../config/database')
 const {DataTypes} = require('sequelize');
 
 
-const Payment = sequelize.define("payment",
+const Package = sequelize.define("package",
     {
-        order_id: {
-            type: DataTypes.STRING,
+        title: {
+            type: DataTypes.STRING(100),
+            allowNull: false,
         },
-        amount: {
+        price: {
             type: DataTypes.DOUBLE,
             allowNull: false,
         },
-        description: {
-            type: DataTypes.TEXT("medium"),
+        discount: {
+            type: DataTypes.DOUBLE,
+            defaultValue: 0.0,
         },
-        mode_id: {
+        duration_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        branch_id: {
+        class_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
         }
@@ -28,5 +30,4 @@ const Payment = sequelize.define("payment",
     },
 );
 
-
-module.exports = Payment;
+module.exports = Package;

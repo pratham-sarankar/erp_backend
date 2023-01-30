@@ -13,7 +13,12 @@ const userRouter = require("../routes/users/users");
 const branchRouter = require("../routes/branch");
 const courseRouter = require("../routes/course");
 const paymentRouter = require("../routes/payments");
-const moduleRouter= require("../routes/modules");
+const orderRouter = require("../routes/orders");
+const moduleRouter = require("../routes/modules");
+const packageRouter = require("../routes/class/package");
+const durationRouter = require("../routes/class/duration");
+const subscriptionRouter = require("../routes/subscription");
+const paymentModeRouter = require("../routes/payment_modes");
 
 function router(app) {
     //Routers
@@ -27,12 +32,19 @@ function router(app) {
     app.use("/class", classRouter);
     app.use("/product", productRouter);
     app.use("/permission-group", permissionGroupRouter);
-    app.use("/permission",permissionRouter);
+    app.use("/permission", permissionRouter);
     app.use("/user", userRouter);
     app.use("/branch", branchRouter);
     app.use("/course", courseRouter);
-    app.use("/payment",paymentRouter);
-    app.use("/module",moduleRouter);
+    app.use("/payment", paymentRouter);
+    app.use("/payment-mode",paymentModeRouter);
+    app.use("/order",orderRouter);
+    app.use("/module", moduleRouter);
+    app.use("/package", packageRouter);
+    app.use("/duration", durationRouter);
+    app.use("/subscription", subscriptionRouter);
+
+
 
     //Error handler
     app.use(function (err, req, res, next) {
