@@ -1,6 +1,8 @@
 const Class = require("../../models/class");
+const Employee = require("../../models/employee")
 
 async function insert(req, res, next) {
+    console.log(req.body)
     try {
         const newClass = await Class.create(req.body);
         return res.status(201).json({status: "success", data: newClass, message: "New class created!"});
@@ -27,8 +29,12 @@ async function fetch(req, res, next) {
         const classes = await Class.findAll(
             {
                 where: req.query,
-                limit:limit,
-                offset:offset,
+                limit: limit,
+                offset: offset,
+                include: {
+                    model: Employee,
+                    as: 'trainer'
+                }
             },
         );
         return res.status(200).json({status: "success", data: classes, message: "Classes fetched successfully."});

@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.1.1">
-      <change afterPath="$PROJECT_DIR$/controllers/classes/duration_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/classes/package_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/payment_mode_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/subscription_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/duration.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/package.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/payment_mode.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/subscription.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/class/duration.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/class/package.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/payment_modes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/subscription.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/coupon_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/coupon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/coupons.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/order_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/order_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/payment_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/payment_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/classes/class_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/class_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/employees/designation_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/designation_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/subscription_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/subscription_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middlewares/router_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/router_middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/designation.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/designation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/payment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/package.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/package.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +63,13 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.9.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.11.9&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;19.5.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.13.0&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/prathamsarankar/Documents/express_projects/erp_backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;rest.client.default.execution.environment&quot;: &quot;dev&quot;,
@@ -214,7 +214,26 @@
       <workItem from="1674642593049" duration="5434000" />
       <workItem from="1674701460719" duration="9593000" />
       <workItem from="1674816770407" duration="2316000" />
-      <workItem from="1674963885005" duration="7810000" />
+      <workItem from="1674963885005" duration="10694000" />
+      <workItem from="1675254900391" duration="625000" />
+      <workItem from="1675326432010" duration="243000" />
+      <workItem from="1675517942222" duration="19000" />
+      <workItem from="1675521262111" duration="2614000" />
+      <workItem from="1675529438978" duration="335000" />
+      <workItem from="1675558392507" duration="15000" />
+      <workItem from="1675571482603" duration="297000" />
+      <workItem from="1675765377711" duration="605000" />
+      <workItem from="1675775930508" duration="2583000" />
+      <workItem from="1675787875076" duration="3869000" />
+      <workItem from="1675861929158" duration="2673000" />
+      <workItem from="1675875221298" duration="6246000" />
+      <workItem from="1675950038250" duration="1230000" />
+      <workItem from="1676027165852" duration="738000" />
+      <workItem from="1676027945288" duration="20000" />
+      <workItem from="1676027971404" duration="5821000" />
+      <workItem from="1676171910718" duration="7000" />
+      <workItem from="1676172209832" duration="1547000" />
+      <workItem from="1676178278637" duration="4021000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>

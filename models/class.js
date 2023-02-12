@@ -13,12 +13,6 @@ const Class = sequelize.define("class",
         description: {
             type: DataTypes.TEXT("medium"),
         },
-        price: {
-            type: DataTypes.DOUBLE,
-            validate:{
-                isNumeric:true,
-            }
-        },
         schedule:{
             type:DataTypes.STRING,
             allowNull: false,

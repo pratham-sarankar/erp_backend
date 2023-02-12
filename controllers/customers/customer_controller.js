@@ -93,6 +93,7 @@ async function loginWithPhoneNumber(req, res, next) {
 }
 
 async function login(customer, req, res, next) {
+    const password = req.body.password;
     try {
         const matched = EncryptionController.comparePassword(password, customer.password);
         if (!matched) return res.status(401).json({status: "error", data: null, message: "Incorrect password"});

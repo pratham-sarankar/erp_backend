@@ -58,11 +58,32 @@ async function fetchOne(req, res) {
 async function fetch(req, res) {
     const limit = parseInt(req.headers.limit ?? "100");
     const offset = parseInt(req.headers.offset ?? "0");
+
+    //Employees can be searched by the designation.
+    //In order to search employees by designation.
+    //Designation ID must be known, so, in case, we get the designation_id directly, well n good.
+    //We may also get designation key, which is either null or unique for all designations.
+    //In case we get designation key, search by key and replace with id
+
+    if(req.query.designation_key){
+        const designation = await Designation.findOne({where:{key:req.query.designation_key}});
+        delete req.query.designation_key;
+        if(designation){
+            req.query = {
+                ...req.query,
+                designation_id:designation.id,
+            }
+        }
+    }
+
     const employees = await Employee.findAll(
         {
             where: req.query,
             limit: limit,
             offset: offset,
+            include:{
+                model: Designation,
+            }
         },
     );
     return res.status(200).json({status: "success", data: employees, message: "Employees fetched successfully."});

@@ -1,13 +1,18 @@
 const sequelize = require('../config/database')
-const { DataTypes } = require('sequelize');
+const {DataTypes} = require('sequelize');
 
 
 const Designation = sequelize.define("designation",
     {
+        key: {
+            type: DataTypes.STRING(100),
+            unique: true,
+            allowNull: true,
+        },
         name: {
             type: DataTypes.STRING(100),
-            unique:true,
-            nullable:false,
+            unique: true,
+            allowNull: false,
         },
     },
     {

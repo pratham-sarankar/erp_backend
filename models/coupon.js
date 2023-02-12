@@ -2,28 +2,28 @@ const sequelize = require('../config/database')
 const {DataTypes} = require('sequelize');
 
 
-const Package = sequelize.define("package",
+const Coupon = sequelize.define("coupon",
     {
-        title: {
+        name: {
             type: DataTypes.STRING(100),
-            allowNull: false,
         },
-        price: {
+        discount:{
             type: DataTypes.DOUBLE,
             allowNull: false,
         },
-        duration_id: {
+        maxUsage:{
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
-        class_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        }
+        expireAt:{
+            type:DataTypes.DATE,
+            allowNull:false,
+        },
     },
     {
         sequelize,
     },
 );
 
-module.exports = Package;
+
+module.exports = Coupon;

@@ -19,6 +19,7 @@ const packageRouter = require("../routes/class/package");
 const durationRouter = require("../routes/class/duration");
 const subscriptionRouter = require("../routes/subscription");
 const paymentModeRouter = require("../routes/payment_modes");
+const couponRouter = require("../routes/coupons");
 
 function router(app) {
     //Routers
@@ -43,7 +44,7 @@ function router(app) {
     app.use("/package", packageRouter);
     app.use("/duration", durationRouter);
     app.use("/subscription", subscriptionRouter);
-
+    app.use("/coupon",couponRouter);
 
 
     //Error handler

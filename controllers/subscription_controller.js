@@ -3,6 +3,7 @@ const Customer = require("../models/customer");
 const Package = require("../models/package");
 const Payment = require("../models/payment");
 const Class = require("../models/class");
+const Coupon = require("../models/coupon");
 const PaymentMode = require("../models/payment_mode");
 
 async function insert(req, res, next) {
@@ -10,7 +11,12 @@ async function insert(req, res, next) {
     try {
         if (!req.body.payment_id) {
             const foundPackage = await Package.findByPk(packageId);
-            req.body.amount = foundPackage.price - ((foundPackage.discount / 100) * foundPackage.price);
+            if (req.body.coupon_id) {
+                const coupon = await Coupon.findByPk(req.body.coupon_id);
+                req.body.amount = foundPackage.price - (coupon.discount * foundPackage.price) / 100;
+            } else {
+                req.body.amount = foundPackage.price;
+            }
             console.log(req.body.amount);
             const payment = await Payment.create(req.body);
             await payment.reload();

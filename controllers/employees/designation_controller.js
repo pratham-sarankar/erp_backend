@@ -1,24 +1,24 @@
 const Employee = require("../../models/employee");
 const Designation = require("../../models/designation")
 const sequelize = require("../../config/database");
+const {Op} = require("sequelize");
 
 async function insert(req, res, next) {
-    const name = req.body.name;
     try {
-        if (name === null || name === undefined) {
-            return res.status(400).json({status: "error", data: null, message: "Invalid Designation."});
-        }
-        const designation = await Designation.create({name: name})
+        //Step 1 : Create a designation with the data in the body.
+        const designation = await Designation.create(req.body);
         res.status(201).json({status: "success", data: designation, message: "Designation created successfully."});
-    } catch (err) {
-        next(err);
+    } catch (e) {
+        next(e);
     }
 }
 
 async function fetch(req, res, next) {
     try {
+        //Step 1 : Query the designations and send the response.
         const designations = await Designation.findAll({
-            attributes: ["id", "name", [sequelize.fn('COUNT', sequelize.col('employees.id')), 'employees_count']],
+            attributes: ["id", "name", "key", [sequelize.fn('COUNT', sequelize.col('employees.id')), 'employees_count']],
+            where: req.query,
             include: {
                 model: Employee,
                 attributes: []
@@ -26,8 +26,8 @@ async function fetch(req, res, next) {
             group: ['id']
         });
         res.status(200).json({status: "success", data: designations, message: "Designations fetched successfully."});
-    } catch (err) {
-        next(err);
+    } catch (e) {
+        next(e);
     }
 }
 
@@ -35,41 +35,61 @@ async function fetchOne(req, res, next) {
     const groupId = req.params.id;
 
     try {
+        //Step 1 : Fetch the designation with the id and send the response.
         const designation = await Designation.findByPk(groupId, {include: {model: Employee}});
         res.status(200).json({status: "success", data: designation, message: "Designation fetched successfully."});
-    } catch (err) {
-        next(err);
+    } catch (e) {
+        next(e);
     }
 
 }
 
-async function update(req, res) {
+async function update(req, res, next) {
     const id = req.params.id;
-
     try {
-        const result = await Designation.update({...req.body},{where:{id:id}});
+        //Step 1 : Update the data and send the response.
+        const result = await Designation.update({...req.body}, {where: {id: id}});
         res.status(200).json({status: "success", data: result, message: "Designation updated successfully."});
-    } catch (error) {
-        res.status(404).json({status: "error", data: error, message: "An error occurred"});
+    } catch (e) {
+        next(e);
     }
 }
 
-async function destroy(req, res) {
+async function destroy(req, res, next) {
     const id = req.params.id;
     try {
-        await Designation.destroy({where: {id: id}});
+        //Step 1 : Fetch the designation by id.
+        const designation = await Designation.findByPk(id);
+        //Step 2 : If the key is not null abort the operation.
+        if (designation.key)
+            return res.status(400).json({
+                status: "error",
+                data: null,
+                message: "The requested designation is not deletable."
+            })
+        //Step 3 : Else delete the designation and send the response.
+        await designation.destroy();
         res.status(202).json({status: "success", data: null, message: "Designation deleted successfully."});
-    } catch (error) {
-        res.status(500).json({status: "error", data: error, message: "An error occurred"});
+    } catch (e) {
+        next(e);
     }
 }
 
 async function destroyMany(req, res, next) {
-    const ids = req.query;
-
+    const ids = req.query.ids;
     try {
-        await Designation.destroy({where: {id: ids}});
-        res.status(202).json({status: "success", data: null, message: "Designations deleted successfully"});
+        //Step 1 : Fetch all ids where key is not null.
+        const designations = await Designation.findAll({where: {[Op.and]: [{key: {[Op.not]: null}}, {id: ids}]}});
+        //Step 2 : If any requested designation's key is not null. Abort the operation.
+        if (designations.length > 0)
+            return res.status(400).json({
+                status: "error",
+                data: designations,
+                message: "One or more requested designations are not deletable."
+            });
+        //Step 3: Else delete the requested designations and send the response.
+        await Designation.destroy({where: {[Op.and]: [{key: {[Op.is]: null}}, {id: ids}]}},);
+        res.status(202).json({status: "success", data: designations, message: "Designations deleted successfully"});
     } catch (e) {
         next(e);
     }

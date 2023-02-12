@@ -15,6 +15,7 @@ const Permission = require("./permission");
 const Package = require("./package");
 const Duration = require("./duration");
 const Subscription = require("./subscription");
+const Coupon = require("./coupon");
 
 //Branch and employee
 Branch.hasMany(Employee, {
@@ -95,7 +96,7 @@ Employee.belongsTo(Designation, {foreignKey: "designation_id"});
 
 
 //Class and Employee relation
-Class.belongsTo(Employee, {foreignKey: "employee_id"});
+Class.belongsTo(Employee, {foreignKey: "trainer_id", as: 'trainer'});
 
 
 //Class and Tags relation
@@ -108,11 +109,11 @@ Class.hasMany(Package, {foreignKey: "class_id"});
 
 //Package and Duration relation
 Duration.hasMany(Package, {foreignKey: "duration_id"});
-Package.belongsTo(Duration,{foreignKey:"duration_id"});
+Package.belongsTo(Duration, {foreignKey: "duration_id"});
 
 //Payment and Payment mode relation
-Payment.belongsTo(PaymentMode,{foreignKey:"mode_id"});
-PaymentMode.hasMany(Payment,{foreignKey:"mode_id"});
+Payment.belongsTo(PaymentMode, {foreignKey: "mode_id"});
+PaymentMode.hasMany(Payment, {foreignKey: "mode_id"});
 
 //Payment and customer relation
 Payment.belongsTo(Customer, {foreignKey: "customer_id"});
@@ -120,15 +121,21 @@ Customer.hasMany(Payment, {foreignKey: "customer_id"});
 
 
 //Subscription and customer relation
-Customer.hasMany(Subscription,{foreignKey:"customer_id"});
-Subscription.belongsTo(Customer,{foreignKey:"customer_id"});
+Customer.hasMany(Subscription, {foreignKey: "customer_id"});
+Subscription.belongsTo(Customer, {foreignKey: "customer_id"});
 
 //Package and Subscription relation
-Package.hasMany(Subscription,{foreignKey:"package_id"});
-Subscription.belongsTo(Package,{foreignKey:"package_id"});
+Package.hasMany(Subscription, {foreignKey: "package_id"});
+Subscription.belongsTo(Package, {foreignKey: "package_id"});
 
 //Payment and subscription relation;
-Subscription.belongsTo(Payment,{foreignKey:"payment_id"});
+Payment.hasMany(Subscription, {foreignKey: "payment_id"})
+Subscription.belongsTo(Payment, {foreignKey: "payment_id"});
+
+
+//Subscription and Coupon relation;
+Coupon.hasMany(Subscription,{foreignKey:"coupon_id"});
+Subscription.belongsTo(Coupon,{foreignKey:"coupon_id"});
 
 
 //PermissionGroup and modules relation
