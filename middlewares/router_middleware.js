@@ -20,6 +20,7 @@ const durationRouter = require("../routes/class/duration");
 const subscriptionRouter = require("../routes/subscription");
 const paymentModeRouter = require("../routes/payment_modes");
 const couponRouter = require("../routes/coupons");
+const callLogRouter = require("../routes/call_log");
 
 function router(app) {
     //Routers
@@ -38,13 +39,14 @@ function router(app) {
     app.use("/branch", branchRouter);
     app.use("/course", courseRouter);
     app.use("/payment", paymentRouter);
-    app.use("/payment-mode",paymentModeRouter);
-    app.use("/order",orderRouter);
+    app.use("/payment-mode", paymentModeRouter);
+    app.use("/order", orderRouter);
     app.use("/module", moduleRouter);
     app.use("/package", packageRouter);
     app.use("/duration", durationRouter);
     app.use("/subscription", subscriptionRouter);
-    app.use("/coupon",couponRouter);
+    app.use("/coupon", couponRouter);
+    app.use('/call-log', callLogRouter);
 
 
     //Error handler

@@ -4,22 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.1.1">
-      <change afterPath="$PROJECT_DIR$/controllers/coupon_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/coupon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/coupons.js" afterDir="false" />
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.2.1">
+      <change afterPath="$PROJECT_DIR$/controllers/call_log_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/call_log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/call_log.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/classes/class_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/class_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/employees/designation_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/designation_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/subscription_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/subscription_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middlewares/router_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/router_middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/class.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/designation.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/designation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/package.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/package.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,30 +46,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;19.5.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.13.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/prathamsarankar/Documents/express_projects/erp_backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;rest.client.default.execution.environment&quot;: &quot;dev&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "javascript.nodejs.core.library.configured.version": "19.5.0",
+    "javascript.nodejs.core.library.typings.version": "18.13.0",
+    "last_opened_file_path": "/Users/prathamsarankar/Documents/express_projects/erp_backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "rest.client.default.execution.environment": "dev",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "show.migrate.to.gradle.popup": "false",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/controllers" />
@@ -233,7 +224,10 @@
       <workItem from="1676027971404" duration="5821000" />
       <workItem from="1676171910718" duration="7000" />
       <workItem from="1676172209832" duration="1547000" />
-      <workItem from="1676178278637" duration="4021000" />
+      <workItem from="1676178278637" duration="4754000" />
+      <workItem from="1676272721589" duration="323000" />
+      <workItem from="1676356034567" duration="568000" />
+      <workItem from="1676433978136" duration="4502000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
@@ -347,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674359706996</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Version 1.2.1">
+      <created>1676212118502</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1676212118502</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,6 +380,7 @@
     <MESSAGE value="Version 1.0.1" />
     <MESSAGE value="Version 1.1.0" />
     <MESSAGE value="Version 1.1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.1.1" />
+    <MESSAGE value="Version 1.2.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.2.1" />
   </component>
 </project>
