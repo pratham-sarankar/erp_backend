@@ -51,7 +51,16 @@ async function fetchOne(req, res, next) {
 async function fetch(req, res, next) {
     const limit = parseInt(req.headers.limit ?? "100");
     const offset = parseInt(req.headers.offset ?? "0");
+
     try {
+        if (req.query.class_id) {
+            const classId = req.query.class_id;
+            const classPackages = await Package.findAll({where: {class_id: classId}});
+            const ids = classPackages.map(value => value.id);
+            delete req.query.class_id;
+            req.query.package_id = ids
+            // return res.json({classId:classId,packages:ids})
+        }
         const subscriptions = await Subscription.findAll(
             {
                 where: req.query,
