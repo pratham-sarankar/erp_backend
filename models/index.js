@@ -16,6 +16,7 @@ const Package = require("./package");
 const Duration = require("./duration");
 const Subscription = require("./subscription");
 const Coupon = require("./coupon");
+const Batch = require("./batch")
 
 //Branch and employee
 Branch.hasMany(Employee, {
@@ -94,6 +95,9 @@ Designation.hasMany(Employee, {
 });
 Employee.belongsTo(Designation, {foreignKey: "designation_id"});
 
+//Class and Batch relation
+Class.belongsTo(Batch, {foreignKey: "batch_id"});
+Batch.hasMany(Class, {foreignKey: "batch_id"});
 
 //Class and Employee relation
 Class.belongsTo(Employee, {foreignKey: "trainer_id", as: 'trainer'});
@@ -134,8 +138,8 @@ Subscription.belongsTo(Payment, {foreignKey: "payment_id"});
 
 
 //Subscription and Coupon relation;
-Coupon.hasMany(Subscription,{foreignKey:"coupon_id"});
-Subscription.belongsTo(Coupon,{foreignKey:"coupon_id"});
+Coupon.hasMany(Subscription, {foreignKey: "coupon_id"});
+Subscription.belongsTo(Coupon, {foreignKey: "coupon_id"});
 
 
 //PermissionGroup and modules relation

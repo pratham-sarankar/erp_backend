@@ -22,6 +22,7 @@ const paymentModeRouter = require("../routes/payment_modes");
 const couponRouter = require("../routes/coupons");
 const callLogRouter = require("../routes/call_log");
 const mailRouter = require("../routes/mail");
+const batchRouter = require('../routes/class/batch');
 
 function router(app) {
     //Routers
@@ -48,7 +49,8 @@ function router(app) {
     app.use("/subscription", subscriptionRouter);
     app.use("/coupon", couponRouter);
     app.use('/call-log', callLogRouter);
-    app.use('/mail',mailRouter);
+    app.use('/mail', mailRouter);
+    app.use('/batch', batchRouter);
 
 
     //Error handler

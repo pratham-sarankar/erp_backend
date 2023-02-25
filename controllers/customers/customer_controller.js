@@ -11,6 +11,20 @@ async function insert(req, res, next) {
     }
 }
 
+async function fetchMe(req,res, next){
+    console.log(req.headers);
+    const decoded = TokenController.decodeToken(req.token);
+    console.log(decoded);
+    const id = decoded.uid;
+    try {
+        const customer = await Customer.scope('excludePassword').findByPk(id);
+        if (customer == null) return res.status(404).json({status: "error", data: null, message: "Customer not found"});
+        return res.json({status: "success", data: customer, message: "Customer fetched successfully"});
+    } catch (err) {
+        next(err);
+    }
+}
+
 async function fetchOne(req, res, next) {
     const id = req.params.id;
     try {
@@ -114,6 +128,7 @@ async function login(customer, req, res, next) {
 
 module.exports = {
     insert,
+    fetchMe,
     fetchOne,
     fetch,
     update,

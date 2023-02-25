@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.3.1">
-      <change afterPath="$PROJECT_DIR$/controllers/mail_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/mail.js" afterDir="false" />
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.4.1">
+      <change afterPath="$PROJECT_DIR$/controllers/classes/batch_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/batch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/class/batch.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/subscription_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/subscription_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middlewares/router_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/router_middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/customers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,6 +236,10 @@
       <workItem from="1676595764478" duration="1226000" />
       <workItem from="1676652246147" duration="5252000" />
       <workItem from="1676954891683" duration="3000" />
+      <workItem from="1676955053692" duration="891000" />
+      <workItem from="1676958981961" duration="1558000" />
+      <workItem from="1677123574454" duration="2692000" />
+      <workItem from="1677335288162" duration="2170000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
@@ -361,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676442688164</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Version 1.4.1">
+      <created>1676955080738</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1676955080738</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,6 +408,7 @@
     <MESSAGE value="Version 1.1.1" />
     <MESSAGE value="Version 1.2.1" />
     <MESSAGE value="Version 1.3.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.3.1" />
+    <MESSAGE value="Version 1.4.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.4.1" />
   </component>
 </project>

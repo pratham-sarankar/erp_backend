@@ -17,14 +17,6 @@ const Class = sequelize.define("class",
             type:DataTypes.STRING,
             allowNull: false,
         },
-        start_time:{
-            type:DataTypes.TIME,
-            allowNull:false,
-        },
-        end_time:{
-            type:DataTypes.TIME,
-            allowNull:false,
-        },
         branch_id:{
             type:DataTypes.INTEGER,
             allowNull:false,
