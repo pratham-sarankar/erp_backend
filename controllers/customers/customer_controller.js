@@ -4,8 +4,8 @@ const EncryptionController = require('../encryption_controller');
 
 async function insert(req, res, next) {
     try {
-        await Customer.create(req.body);
-        return res.status(201).json({status: "success", data: null, message: "Customer created successfully"});
+        const data = await Customer.create(req.body);
+        return res.status(201).json({status: "success", data: data, message: "Customer created successfully"});
     } catch (err) {
         next(err);
     }
