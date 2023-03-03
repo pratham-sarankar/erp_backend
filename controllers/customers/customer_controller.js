@@ -11,7 +11,22 @@ async function insert(req, res, next) {
     }
 }
 
-async function fetchMe(req,res, next){
+async function register(req, res, next) {
+    try {
+        const data = await Customer.create(req.body);
+        const token = await TokenController.generateNewToken(data);
+        return res.status(201).json({
+            status: "success",
+            data: {token: token, customer: data},
+            message: "Customer registered successfully"
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
+
+async function fetchMe(req, res, next) {
     console.log(req.headers);
     const decoded = TokenController.decodeToken(req.token);
     console.log(decoded);
@@ -43,8 +58,8 @@ async function fetch(req, res, next) {
         const customers = await Customer.scope("excludePassword").findAll(
             {
                 where: req.query,
-                limit:limit,
-                offset:offset,
+                limit: limit,
+                offset: offset,
             },
         );
         return res.status(200).json({status: "success", data: customers, message: "Customers fetched successfully"});
@@ -135,5 +150,6 @@ module.exports = {
     destroy,
     destroyMany,
     loginWithEmailAndPassword,
-    loginWithPhoneNumber
+    loginWithPhoneNumber,
+    register,
 };

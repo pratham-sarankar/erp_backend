@@ -15,7 +15,7 @@ router.delete("/", Controller.destroyMany);
 //Customer Routes
 router.post("/login/email", Controller.loginWithEmailAndPassword);
 router.post("/login/phone", Controller.loginWithPhoneNumber);
-router.post("/register", Controller.insert);
+router.post("/register", Controller.register);
 router.get("images/:key", S3Middleware.downloader, (req, res) => {
     return req.stream.pipe(res);
 });
