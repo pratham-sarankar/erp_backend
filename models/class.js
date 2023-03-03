@@ -10,16 +10,24 @@ const Class = sequelize.define("class",
         photoUrl: {
             type: DataTypes.STRING(255),
         },
+        start_time: {
+            type: DataTypes.TIME,
+            allowNull: false,
+        },
+        end_time: {
+            type: DataTypes.TIME,
+            allowNull: false,
+        },
         description: {
             type: DataTypes.TEXT("medium"),
         },
-        schedule:{
-            type:DataTypes.STRING,
+        schedule: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
-        branch_id:{
-            type:DataTypes.INTEGER,
-            allowNull:false,
+        branch_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
         }
     },
     {
