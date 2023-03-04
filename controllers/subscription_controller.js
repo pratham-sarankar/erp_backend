@@ -7,21 +7,7 @@ const Coupon = require("../models/coupon");
 const PaymentMode = require("../models/payment_mode");
 
 async function insert(req, res, next) {
-    const packageId = req.body.package_id;
     try {
-        if (!req.body.payment_id) {
-            const foundPackage = await Package.findByPk(packageId);
-            if (req.body.coupon_id) {
-                const coupon = await Coupon.findByPk(req.body.coupon_id);
-                req.body.amount = foundPackage.price - (coupon.discount * foundPackage.price) / 100;
-            } else {
-                req.body.amount = foundPackage.price;
-            }
-            console.log(req.body.amount);
-            const payment = await Payment.create(req.body);
-            await payment.reload();
-            req.body.payment_id = payment.id;
-        }
         const newSubscription = await Subscription.create(req.body);
         return res.status(201).json({status: "success", data: newSubscription, message: "New Subscription created!"});
     } catch (err) {

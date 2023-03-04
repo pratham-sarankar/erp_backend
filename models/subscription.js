@@ -3,6 +3,7 @@ const Sequelize = require("sequelize");
 const {DataTypes} = require('sequelize');
 const Package = require("./package");
 const Duration = require("./duration");
+const Class = require("./class");
 
 
 const Subscription = sequelize.define("subscription",
@@ -28,7 +29,7 @@ const Subscription = sequelize.define("subscription",
         },
         expiringAt: {
             type: DataTypes.DATE,
-        }
+        },
     },
     {
         sequelize,
@@ -47,6 +48,12 @@ Subscription.beforeCreate(async (subscription, options) => {
     let date = new Date();
     date = date.addDays(foundPackage.duration.days)
     subscription.expiringAt = date;
+
+    //Adding branch id;
+    if(!subscription.branch_id){
+        const foundClass = await Class.findByPk(foundPackage.class_id);
+        subscription.branch_id = foundClass.branch_id;
+    }
 });
 
 

@@ -1,15 +1,15 @@
 const sequelize = require('../config/database')
 const {DataTypes} = require('sequelize');
+const Package = require("./package");
+const Duration = require("./duration");
+const Class = require("./class");
 
 
 const Payment = sequelize.define("payment",
     {
         order_id: {
             type: DataTypes.STRING,
-        },
-        amount: {
-            type: DataTypes.DOUBLE,
-            allowNull: false,
+            unique: true,
         },
         description: {
             type: DataTypes.TEXT("medium"),
@@ -27,6 +27,9 @@ const Payment = sequelize.define("payment",
         sequelize,
     },
 );
+
+
+
 
 
 module.exports = Payment;
