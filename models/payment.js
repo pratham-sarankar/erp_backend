@@ -34,9 +34,11 @@ const Payment = sequelize.define("payment",
 );
 
 
-Payment.beforeCreate(async (payment, options) => {
+Payment.beforeValidate(async (payment, options) => {
     //Adding order amount;
-    if(!payment.order_id){
+    console.log("Printing the payment : ");
+    console.log(payment);
+    if(payment.order_id){
         const instance = new Razorpay({key_id: process.env.RZR_KEY_ID, key_secret: process.env.RZR_KEY_SECRET});
         const order = await instance.orders.fetch(payment.order_id);
         payment.amount = order.amount;
