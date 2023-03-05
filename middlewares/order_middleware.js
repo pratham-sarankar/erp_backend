@@ -20,7 +20,7 @@ async function verifyOrder(req,res,next){
         const order = await instance.orders.fetch(req.body.order_id);
 
         //Step 3 : Verify the given order id.
-        if(order.amount_due>0){
+        if(order.amount_due==0){
             return res.status(401).json({
                 status:"error",
                 data:null,

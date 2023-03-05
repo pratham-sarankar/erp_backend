@@ -6,6 +6,8 @@ const TokenMiddleware = require("../middlewares/token_middlewares");
 
 router.post("/", Controller.insert);
 router.get("/me", TokenMiddleware.verifyToken, Controller.fetchMe);
+router.get("/me/subscriptions",TokenMiddleware.verifyToken,Controller.fetchMySubscription);
+router.get("/me/payments",TokenMiddleware.verifyToken,Controller.fetchMyPayments);
 router.get("/:id", Controller.fetchOne);
 router.get("/", Controller.fetch);
 router.put("/:id", Controller.update);

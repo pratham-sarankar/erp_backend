@@ -16,8 +16,17 @@ async function create(req, res, next) {
     }
 }
 
+async function fetchOne(req,res,next){
+    try {
+        const instance = new Razorpay({key_id: process.env.RZR_KEY_ID, key_secret: process.env.RZR_KEY_SECRET});
+        const order = await instance.orders.fetch(req.params.id);
+        if (order == null) return res.status(500).json({status: "error", message: "An error occurred", data: null});
+        return res.status(200).json({status: "success", data: order, message: "Order fetched successfully"});
+    } catch (err) {
+        next(err);
+    }
+}
 
 
 
-
-module.exports = {create};
+module.exports = {create,fetchOne};

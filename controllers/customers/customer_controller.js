@@ -1,6 +1,10 @@
 const Customer = require("../../models/customer");
 const TokenController = require("../token_controller");
 const EncryptionController = require('../encryption_controller');
+const Subscription  = require("../../models/subscription");
+const Payment = require("../../models/payment");
+const Package = require("../../models/package");
+const Class = require("../../models/class");
 
 async function insert(req, res, next) {
     try {
@@ -27,15 +31,36 @@ async function register(req, res, next) {
 
 
 async function fetchMe(req, res, next) {
-    console.log(req.headers);
     const decoded = TokenController.decodeToken(req.token);
-    console.log(decoded);
     const id = decoded.uid;
     try {
         const customer = await Customer.scope('excludePassword').findByPk(id);
         if (customer == null) return res.status(404).json({status: "error", data: null, message: "Customer not found"});
         return res.json({status: "success", data: customer, message: "Customer fetched successfully"});
     } catch (err) {
+        next(err);
+    }
+}
+
+async function fetchMySubscription(req,res,next){
+    const decoded = TokenController.decodeToken(req.token);
+    const id = decoded.uid;
+    console.log(id);
+    try{
+        const subscriptions = await Subscription.findAll({where:{customer_id:id},include:{model:Package,include:Class}});
+        return res.json({status:"success",data:subscriptions,message:"Subscriptions fetched successfully"});
+    }catch(err){
+        next(err);
+    }
+}
+
+async function fetchMyPayments(req,res,next){
+    const decoded = TokenController.decodeToken(req.token);
+    const id = decoded.uid;
+    try{
+        const payments = await Payment.findAll({where:{customer_id:id}});
+        return res.json({status:"success",data:payments,message:"Payments fetched successfully."});
+    }catch(err){
         next(err);
     }
 }
@@ -152,4 +177,6 @@ module.exports = {
     loginWithEmailAndPassword,
     loginWithPhoneNumber,
     register,
+    fetchMyPayments,
+    fetchMySubscription
 };
