@@ -1,5 +1,6 @@
 const Class = require("../../models/class");
-const Employee = require("../../models/employee")
+const Package = require("../../models/package");
+const Employee = require("../../models/employee");
 
 async function insert(req, res, next) {
     console.log(req.body)
@@ -14,7 +15,7 @@ async function insert(req, res, next) {
 async function fetchOne(req, res, next) {
     const id = req.params.id;
     try {
-        const foundClass = await Class.findByPk(id);
+        const foundClass = await Class.findByPk(id,{include:Package});
         if (foundClass == null) return res.status(404).json({status: "error", data: null, message: "Class not found."});
         return res.status(200).json({status: "success", data: foundClass, message: "Class fetched successfully."});
     } catch (err) {
@@ -31,10 +32,15 @@ async function fetch(req, res, next) {
                 where: req.query,
                 limit: limit,
                 offset: offset,
-                include: {
-                    model: Employee,
-                    as: 'trainer'
-                }
+                include: [
+                    {
+                        model: Employee,
+                        as: 'trainer'
+                    },
+                    {
+                        model: Package,
+                    }
+                ]
             },
         );
         return res.status(200).json({status: "success", data: classes, message: "Classes fetched successfully."});
