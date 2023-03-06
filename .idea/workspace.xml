@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.8.2">
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.9.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/classes/class_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/class_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/payment.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +235,8 @@
       <workItem from="1677934737763" duration="2194000" />
       <workItem from="1677954734596" duration="27000" />
       <workItem from="1677992108376" duration="6188000" />
-      <workItem from="1678013066741" duration="214000" />
+      <workItem from="1678013066741" duration="223000" />
+      <workItem from="1678082374603" duration="186000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
@@ -419,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677999968626</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Version 1.9.2">
+      <created>1678013285681</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1678013285681</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,6 +467,7 @@
     <MESSAGE value="Version 1.6.2" />
     <MESSAGE value="Version 1.7.2" />
     <MESSAGE value="Version 1.8.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.8.2" />
+    <MESSAGE value="Version 1.9.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.9.2" />
   </component>
 </project>
