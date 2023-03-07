@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.9.2">
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.9.3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/payment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/course.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +237,9 @@
       <workItem from="1677954734596" duration="27000" />
       <workItem from="1677992108376" duration="6188000" />
       <workItem from="1678013066741" duration="223000" />
-      <workItem from="1678082374603" duration="186000" />
+      <workItem from="1678082374603" duration="830000" />
+      <workItem from="1678093280854" duration="2000" />
+      <workItem from="1678178322789" duration="1626000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
@@ -427,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678013285681</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Version 1.9.3">
+      <created>1678082566171</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1678082566171</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -468,6 +478,7 @@
     <MESSAGE value="Version 1.7.2" />
     <MESSAGE value="Version 1.8.2" />
     <MESSAGE value="Version 1.9.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.9.2" />
+    <MESSAGE value="Version 1.9.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.9.3" />
   </component>
 </project>

@@ -6,7 +6,6 @@ const Course = sequelize.define("course",
     {
         title: {
             type: DataTypes.STRING(100),
-
         },
         photoUrl:{
             type:DataTypes.STRING(255),
