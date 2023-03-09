@@ -3,7 +3,7 @@ const CallLog = require("../models/call_log");
 
 async function insert(req, res, next) {
     try {
-        let branch = await CallLog.create(req.headers);
+        let branch = await CallLog.create(req.body);
         res.status(201).json({status: "success", data: branch, message: "Call log created successfully."});
     } catch (err) {
         next(err);
