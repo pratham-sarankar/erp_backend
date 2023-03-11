@@ -6,14 +6,14 @@ async function insert(req, res, next) {
     const data = req.body;
     try {
         let branch = await CallLog.create({
-            status: data.Overall_Call_Status,
-            destinationNumber: data.Destination_Number,
-            destinationOperatorName: data.Destination_Operator_Name,
-            time: data.Time,
+            from: data.participants[0].participantAddress,
+            to: data.participants[1].participantAddress,
             type: data.callType,
+            status: data.Overall_Call_Status,
+            date:data.Date,
+            time: data.Time,
             duration: data.duration,
             recordingUrl: data.Recording,
-            date:data.Date
         });
         res.status(201).json({status: "success", data: branch, message: "Call log created successfully."});
     } catch (err) {

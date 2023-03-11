@@ -4,14 +4,14 @@ const {DataTypes} = require('sequelize');
 
 const CallLog = sequelize.define("call_log",
     {
-        status: DataTypes.STRING,
-        destinationNumber: DataTypes.STRING,
-        destinationOperatorName: DataTypes.STRING,
-        time: DataTypes.TIME,
+        to: DataTypes.STRING,
+        from: DataTypes.STRING,
         type: DataTypes.STRING,
+        status: DataTypes.STRING,
+        date:DataTypes.DATEONLY,
+        time: DataTypes.TIME,
         duration: DataTypes.INTEGER,
         recordingUrl: DataTypes.STRING,
-        date:DataTypes.DATEONLY,
     },
     {
         sequelize,
