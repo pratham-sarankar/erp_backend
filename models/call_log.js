@@ -11,6 +11,7 @@ const CallLog = sequelize.define("call_log",
         type: DataTypes.STRING,
         duration: DataTypes.INTEGER,
         recordingUrl: DataTypes.STRING,
+        date:DataTypes.DATEONLY,
     },
     {
         sequelize,

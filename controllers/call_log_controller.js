@@ -13,6 +13,7 @@ async function insert(req, res, next) {
             type: data.callType,
             duration: data.duration,
             recordingUrl: data.Recording,
+            date:data.Date
         });
         res.status(201).json({status: "success", data: branch, message: "Call log created successfully."});
     } catch (err) {
