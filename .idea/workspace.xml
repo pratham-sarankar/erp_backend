@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.10.3">
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.10.4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/call_log_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/call_log_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/call_log.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/call_log.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +241,9 @@
       <workItem from="1678093280854" duration="2000" />
       <workItem from="1678178322789" duration="3072000" />
       <workItem from="1678191008408" duration="6177000" />
-      <workItem from="1678354084438" duration="1189000" />
+      <workItem from="1678354084438" duration="3821000" />
+      <workItem from="1678424026410" duration="13000" />
+      <workItem from="1678507048441" duration="1198000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
@@ -445,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678180889901</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Version 1.10.4">
+      <created>1678355290107</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1678355290107</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,6 +498,7 @@
     <MESSAGE value="Version 1.9.2" />
     <MESSAGE value="Version 1.9.3" />
     <MESSAGE value="Version 1.10.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.10.3" />
+    <MESSAGE value="Version 1.10.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.10.4" />
   </component>
 </project>

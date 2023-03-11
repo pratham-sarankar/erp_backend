@@ -1,9 +1,19 @@
 const sequelize = require("../config/database");
 const CallLog = require("../models/call_log");
+const {DataTypes} = require("sequelize");
 
 async function insert(req, res, next) {
+    const data = req.body;
     try {
-        let branch = await CallLog.create(req.body);
+        let branch = await CallLog.create({
+            status: data.Overall_Call_Status,
+            destinationNumber: data.Destination_Number,
+            destinationOperatorName: data.Destination_Operator_Name,
+            time: data.Time,
+            type: data.callType,
+            duration: data.duration,
+            recordingUrl: data.Recording,
+        });
         res.status(201).json({status: "success", data: branch, message: "Call log created successfully."});
     } catch (err) {
         next(err);
