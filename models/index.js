@@ -17,6 +17,7 @@ const Duration = require("./duration");
 const Subscription = require("./subscription");
 const Coupon = require("./coupon");
 const Batch = require("./batch")
+const CallLog = require("./call_log");
 
 //Branch and employee
 Branch.hasMany(Employee, {
@@ -50,6 +51,23 @@ Course.belongsTo(Branch, {
     foreignKey: "branch_id",
 
 });
+
+//Branch and call_log
+Branch.hasMany(CallLog, {
+    foreignKey: "branch_id",
+})
+CallLog.belongsTo(Branch, {
+    foreignKey: "branch_id",
+});
+
+//Customer and Call log
+Customer.hasMany(CallLog,{
+    foreignKey: "customer_id"
+});
+CallLog.belongsTo(Customer,{
+    foreignKey: "customer_id",
+})
+
 
 //Branch and payment
 Branch.hasMany(Payment, {
@@ -149,6 +167,7 @@ PermissionGroup.hasMany(Permission, {foreignKey: "group_id"});
 Permission.belongsTo(PermissionGroup, {foreignKey: "group_id"});
 Module.hasMany(Permission, {foreignKey: "module_id"});
 Permission.belongsTo(Module, {foreignKey: "module_id"});
+
 
 
 // PermissionGroup.hasMany(Module, {foreignKey: "page_id"});

@@ -1,19 +1,35 @@
 const sequelize = require("../config/database");
 const CallLog = require("../models/call_log");
+const Branch = require("../models/branch");
+const Customer = require("../models/customer");
 const {DataTypes} = require("sequelize");
 
 async function insert(req, res, next) {
-    const data = req.body;
+    const callType = req.body.callType;
+    const from = req.body.participants[0].participantAddress;
+    const to = req.body.participants[1].participantAddress;
+    const customerPhoneNumber = callType=="INBOUND"? from : to;
+    const branchPhoneNumber = callType=="INBOUND" ? to : from;
+
+
+    const branch = await Branch.findOne({where:{phoneNumber:branchPhoneNumber}});
+    const branchId = branch.id;
+
+    const customer = await Customer.findOne({where:{phoneNumber:customerPhoneNumber}});
+    const customerId = customer.id;
+
     try {
         let branch = await CallLog.create({
-            from: data.participants[0].participantAddress,
-            to: data.participants[1].participantAddress,
-            type: data.callType,
-            status: data.Overall_Call_Status,
-            date:data.Date,
-            time: data.Time,
-            duration: data.duration,
-            recordingUrl: data.Recording,
+            customer_phone_number: customerPhoneNumber,
+            branch_phone_number: branchPhoneNumber,
+            type: callType,
+            status: req.body.Overall_Call_Status,
+            date: req.body.Date,
+            time: req.body.Time,
+            duration: req.body.duration,
+            recordingUrl: req.body.Recording,
+            branch_id: branchId,
+            customer_id: customerId,
         });
         res.status(201).json({status: "success", data: branch, message: "Call log created successfully."});
     } catch (err) {
