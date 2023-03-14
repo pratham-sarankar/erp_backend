@@ -11,12 +11,15 @@ async function insert(req, res, next) {
     const customerPhoneNumber = callType=="INBOUND"? from : to;
     const branchPhoneNumber = callType=="INBOUND" ? to : from;
 
-
     const branch = await Branch.findOne({where:{phoneNumber:branchPhoneNumber}});
-    const branchId = branch.id;
+    if(branch){
+        const branchId = branch.id;
+    }
 
     const customer = await Customer.findOne({where:{phoneNumber:customerPhoneNumber}});
-    const customerId = customer.id;
+    if(branch){
+        const customerId = customer.id;
+    }
 
     try {
         let branch = await CallLog.create({
