@@ -19,6 +19,8 @@ async function insert(req, res, next) {
     }
     const customerPhoneNumber = callType=="INBOUND"? from : to;
     const branchPhoneNumber = callType=="INBOUND" ? to : from;
+    console.log(customerPhoneNumber);
+    console.log(branchPhoneNumber);
 
     const branch = await Branch.findOne({where:{phoneNumber:branchPhoneNumber}});
     let branchId;
