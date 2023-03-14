@@ -14,7 +14,7 @@ const CallLog = sequelize.define("call_log",
         recordingUrl: DataTypes.STRING,
         branch_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         customer_id:{
             type: DataTypes.INTEGER,
