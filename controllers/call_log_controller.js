@@ -22,16 +22,20 @@ async function insert(req, res, next) {
     console.log(customerPhoneNumber);
     console.log(branchPhoneNumber);
 
-    const branch = await Branch.findOne({where:{phoneNumber:branchPhoneNumber}});
     let branchId;
-    if(branch){
-        branchId = branch.id;
+    if(branchPhoneNumber){
+        const branch = await Branch.findOne({where:{phoneNumber:branchPhoneNumber}});
+        if(branch){
+            branchId = branch.id;
+        }
     }
 
-    const customer = await Customer.findOne({where:{phoneNumber:customerPhoneNumber}});
     let customerId;
-    if(customer){
-        customerId = customer.id;
+    if(customerPhoneNumber){
+        const customer = await Customer.findOne({where:{phoneNumber:customerPhoneNumber}});
+        if(customer){
+            customerId = customer.id;
+        }
     }
 
     let date;
