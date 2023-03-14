@@ -32,13 +32,19 @@ async function insert(req, res, next) {
         customerId = customer.id;
     }
 
+    let date;
+    if(req.body.Date){
+        const parts = req.body.Date.split('/');
+        date = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+    }
+
     try {
         let branch = await CallLog.create({
             customer_phone_number: customerPhoneNumber,
             branch_phone_number: branchPhoneNumber,
             type: callType,
             status: req.body.Overall_Call_Status,
-            date: req.body.Date,
+            date: date,
             time: req.body.Time,
             duration: req.body.duration,
             recordingUrl: req.body.Recording,
