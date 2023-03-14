@@ -17,7 +17,7 @@ async function insert(req, res, next) {
     }
 
     const customer = await Customer.findOne({where:{phoneNumber:customerPhoneNumber}});
-    if(branch){
+    if(customer){
         const customerId = customer.id;
     }
 
