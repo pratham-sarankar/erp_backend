@@ -75,8 +75,15 @@ async function fetchOne(req, res, next) {
 }
 
 async function fetch(req, res, next) {
+    const limit = parseInt(req.headers.limit ?? "100");
+    const offset = parseInt(req.headers.offset ?? "0");
     try {
-        let callLogs = await CallLog.findAll();
+        let callLogs = await CallLog.findAll({
+            where: req.query,
+            limit: limit,
+            offset: offset,
+            include: Customer,
+        });
         return res.status(200).json({status: "success", data: callLogs, message: "Call logs fetched successfully."});
     } catch (err) {
         next(err);
