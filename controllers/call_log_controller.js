@@ -6,19 +6,30 @@ const {DataTypes} = require("sequelize");
 
 async function insert(req, res, next) {
     const callType = req.body.callType;
-    const from = req.body.participants[0].participantAddress;
-    const to = req.body.participants[1].participantAddress;
+    const participants = req.body.participants;
+
+    let from;
+    if(participants[0]){
+        from = req.body.participants[0].participantAddress;
+    }
+
+    let to;
+    if(participants[1]){
+        to = req.body.participants[1].participantAddress;
+    }
     const customerPhoneNumber = callType=="INBOUND"? from : to;
     const branchPhoneNumber = callType=="INBOUND" ? to : from;
 
     const branch = await Branch.findOne({where:{phoneNumber:branchPhoneNumber}});
+    let branchId;
     if(branch){
-        const branchId = branch.id;
+        branchId = branch.id;
     }
 
     const customer = await Customer.findOne({where:{phoneNumber:customerPhoneNumber}});
+    let customerId;
     if(customer){
-        const customerId = customer.id;
+        customerId = customer.id;
     }
 
     try {
