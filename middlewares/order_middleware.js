@@ -4,6 +4,11 @@ const Payment = require("../models/payment");
 const PaymentMode = require("../models/payment_mode");
 
 async function verifyOrder(req,res,next){
+    if(req.body.payment_id){
+        next();
+        return;
+    }
+
     const instance = new Razorpay({key_id: process.env.RZR_KEY_ID, key_secret: process.env.RZR_KEY_SECRET});
 
     try{
