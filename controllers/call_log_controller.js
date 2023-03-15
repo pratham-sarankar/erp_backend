@@ -52,7 +52,7 @@ async function insert(req, res, next) {
             status: req.body.Overall_Call_Status,
             date: date,
             time: req.body.Time,
-            duration: req.body.duration,
+            duration: req.body.Billable_Duration,
             recordingUrl: req.body.Recording,
             branch_id: branchId,
             customer_id: customerId,

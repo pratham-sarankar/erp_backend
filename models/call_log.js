@@ -10,7 +10,7 @@ const CallLog = sequelize.define("call_log",
         status: DataTypes.STRING,
         date:DataTypes.DATEONLY,
         time: DataTypes.TIME,
-        duration: DataTypes.INTEGER,
+        duration: DataTypes.STRING,
         recordingUrl: DataTypes.STRING,
         branch_id: {
             type: DataTypes.INTEGER,
