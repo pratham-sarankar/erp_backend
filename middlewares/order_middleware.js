@@ -2,16 +2,22 @@ const OrderController = require("../controllers/order_controller");
 const Razorpay = require("razorpay");
 const Payment = require("../models/payment");
 const PaymentMode = require("../models/payment_mode");
-
+const Package = require("../models/package");
 async function verifyOrder(req,res,next){
-    if(req.body.payment_id){
-        next();
-        return;
-    }
-
     const instance = new Razorpay({key_id: process.env.RZR_KEY_ID, key_secret: process.env.RZR_KEY_SECRET});
 
+
     try{
+        //If mode id exist, the payment process is manual. So, redirect it to the next function.
+        if(req.body.mode_id){
+            const package = await Package.findByPk(req.body.package_id);
+            req.body.amount = package.price;
+            const payment = await Payment.create(req.body);
+            req.body.payment_id = payment.id;
+            next();
+            return;
+        }
+
         //Step 1 : If order id doesn't exist, abort with a message.
         if(!req.body.order_id){
             return res.status(401).json({

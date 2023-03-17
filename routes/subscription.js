@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Controller = require("../controllers/subscription_controller");
 const OrderMiddleware = require("../middlewares/order_middleware");
+const TokenMiddleware = require("../middlewares/token_middlewares");
 
 router.post("/", OrderMiddleware.verifyOrder, Controller.insert);
 router.get("/:id", Controller.fetchOne);

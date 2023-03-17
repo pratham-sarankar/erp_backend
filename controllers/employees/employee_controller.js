@@ -73,6 +73,8 @@ async function fetch(req, res) {
                 ...req.query,
                 designation_id:designation.id,
             }
+        }else{
+            return res.status(200).json({status: "success", data: [], message: "Employees fetched successfully."});
         }
     }
 
