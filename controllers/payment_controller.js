@@ -1,6 +1,7 @@
 const Payment = require("../models/payment");
 const PaymentMode = require("../models/payment_mode");
 const Customer = require("../models/customer");
+const {Op} = require("sequelize");
 
 async function insert(req, res, next) {
     try {
@@ -30,10 +31,51 @@ async function fetch(req, res, next) {
     const limit = parseInt(req.headers.limit ?? "100");
     const offset = parseInt(req.headers.offset ?? "0");
     try {
-        const payments = await Payment.findAll(
-            {
+
+        if(req.query.search){
+            const search = req.query.search;
+            req.query = {
+                [Op.or]: [
+                    {amount: {[Op.lte]: search}},
+                    {description: {[Op.like]: `%${search}%`}},
+                ],
+                ...req.query,
+            }
+        }
+        delete req.query.search;
+
+        let order = [];
+        if(req.query.order){
+            const orderColumn = req.query.order;
+            //Initialize orderDirection to ASC
+            let orderDirection = "ASC";
+            //If DESC is true, then orderDirection is DESC
+            if (req.query.DESC === "true"){
+                orderDirection = "DESC";
+            }
+
+            if (orderColumn === "amount"){
+                order = [
+                    ["amount", orderDirection],
+                ]
+            }else if (orderColumn === "description"){
+                order = [
+                    ["description", orderDirection]
+                ]
+            }
+        }
+        delete req.query.order;
+        delete req.query.DESC;
+
+        order = [
+            ...order,
+            ["createdAt", "DESC"],
+        ]
+
+        const options = {
                 where: req.query,
                 limit: limit,
+                order: order,
                 offset: offset,
                 include: [
                     {
@@ -43,12 +85,28 @@ async function fetch(req, res, next) {
                         model: PaymentMode,
                     }
                 ]
-            },
-        );
+            };
+
+
+        let payments;
+        const withCount = req.query.count;
+        delete req.query.count;
+
+        if(withCount){
+            payments= await Payment.findAndCountAll(options);
+        }else{
+            payments = await Payment.findAll(options);
+        }
+
         return res.status(200).json({status: "success", data: payments, message: "payments fetched successfully."});
     } catch (err) {
         next(err);
     }
+}
+
+async function fetchWithCount(req,res,next){
+    req.query.count = true;
+    return fetch(req,res,next);
 }
 
 
@@ -90,4 +148,4 @@ async function destroyMany(req, res, next) {
 
 }
 
-module.exports = {insert, fetchOne, fetch, update, destroy, destroyMany};
+module.exports = {insert, fetchOne, fetch, fetchWithCount, update, destroy, destroyMany};

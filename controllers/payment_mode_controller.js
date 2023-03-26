@@ -1,5 +1,6 @@
 const PaymentMode = require("../models/payment_mode");
 const Customer= require("../models/customer");
+const {Op} = require("sequelize");
 
 async function insert(req, res, next) {
     try {
@@ -29,6 +30,16 @@ async function fetch(req, res, next) {
     const limit = parseInt(req.headers.limit ?? "100");
     const offset = parseInt(req.headers.offset ?? "0");
     try {
+        if(req.query.search){
+            //Find all modes with title like search
+            req.query = {
+                [Op.or]: [
+                    {title: {[Op.like]: `%${req.query.search}%`}},
+                ]
+            }
+        }
+        delete req.query.search;
+
         const paymentModes = await PaymentMode.findAll(
             {
                 where: req.query,

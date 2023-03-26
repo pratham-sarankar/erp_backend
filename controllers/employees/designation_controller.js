@@ -15,6 +15,19 @@ async function insert(req, res, next) {
 
 async function fetch(req, res, next) {
     try {
+
+        if(req.query.search){
+            const search = req.query.search;
+            //Find all customers with the search string in their firstName, lastName, username or phoneNumber
+            req.query = {
+                [Op.or]: [
+                    {name: {[Op.like]: `%${search}%`}},
+                ],
+                ...req.query,
+            }
+        }
+        delete req.query.search;
+
         //Step 1 : Query the designations and send the response.
         const designations = await Designation.findAll({
             attributes: ["id", "name", "key", [sequelize.fn('COUNT', sequelize.col('employees.id')), 'employees_count']],

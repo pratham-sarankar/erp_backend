@@ -5,6 +5,7 @@ const Subscription  = require("../../models/subscription");
 const Payment = require("../../models/payment");
 const Package = require("../../models/package");
 const Class = require("../../models/class");
+const {Op} = require("sequelize");
 
 async function insert(req, res, next) {
     try {
@@ -80,17 +81,99 @@ async function fetch(req, res, next) {
     const limit = parseInt(req.headers.limit ?? "100");
     const offset = parseInt(req.headers.offset ?? "0");
     try {
-        const customers = await Customer.scope("excludePassword").findAll(
-            {
-                where: req.query,
-                limit: limit,
-                offset: offset,
-            },
-        );
+        if(req.query.search){
+            const search = req.query.search;
+            //Find all customers with the search string in their firstName, lastName, username or phoneNumber
+            req.query = {
+                [Op.or]: [
+                    {firstName: {[Op.like]: `%${search}%`}},
+                    {lastName: {[Op.like]: `%${search}%`}},
+                    {username: {[Op.like]: `%${search}%`}},
+                    {phoneNumber: {[Op.like]: `%${search}%`}},
+                    //Write query for case when search will be firstName lastName
+                    {
+                        [Op.and]: [
+                            {firstName: {[Op.like]: `%${search.split(' ')[0]}%`}},
+                            {lastName: {[Op.like]: `%${search.split(' ')[1]}%`}},
+                        ]
+                    },
+                ],
+                ...req.query,
+            }
+        }
+        delete req.query.search;
+
+        //Create order by order paramter in query string, it can be firstName, lastName, username, phoneNumber, createdAt, updatedAt
+        let order = [];
+        if(req.query.order){
+            const orderColumn = req.query.order;
+            //Initialize orderDirection to ASC
+            let orderDirection = "ASC";
+            //If DESC is true, then orderDirection is DESC
+            if (req.query.DESC === "true"){
+                orderDirection = "DESC";
+            }
+
+            if(orderColumn=="username"){
+                order = [
+                    ["username", orderDirection]
+                ]
+            }
+            else if (orderColumn === "full_name"){
+                order = [
+                    ["firstName", orderDirection],
+                    ["lastName", orderDirection],
+                ]
+            }else if (orderColumn === "phone_number"){
+                order = [
+                    ["phoneNumber", orderDirection]
+                ]
+            }else if (orderColumn === "email"){
+                order = [
+                    ["email", orderDirection]
+                ]
+            }else if (orderColumn === "date_of_birth"){
+                order = [
+                    ["dob", orderDirection]
+                ]
+            }
+        }
+        delete req.query.order;
+        delete req.query.DESC;
+
+        let customers;
+        const withCount = req.query.count;
+        delete req.query.count;
+
+
+        order = [
+            ...order,
+            ['createdAt', 'DESC']
+        ]
+
+        const options = {
+            where: req.query,
+            limit: limit,
+            offset: offset,
+            order: order,
+            distinct: true,
+        };
+
+        if(withCount){
+            customers = await Customer.scope("excludePassword").findAndCountAll(options);
+        }else{
+            customers = await Customer.scope("excludePassword").findAll(options);
+        }
+
         return res.status(200).json({status: "success", data: customers, message: "Customers fetched successfully"});
     } catch (err) {
         next(err);
     }
+}
+
+async function fetchWithCount(req,res,next){
+    req.query.count = true;
+    return fetch(req,res,next);
 }
 
 async function update(req, res, next) {
@@ -171,6 +254,7 @@ module.exports = {
     fetchMe,
     fetchOne,
     fetch,
+    fetchWithCount,
     update,
     destroy,
     destroyMany,

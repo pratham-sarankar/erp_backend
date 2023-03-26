@@ -3,8 +3,8 @@ const router = express.Router();
 const Controller = require("../controllers/payment_mode_controller");
 
 router.post("/", Controller.insert);
-router.get("/:id", Controller.fetchOne);
 router.get("/", Controller.fetch);
+router.get("/:id", Controller.fetchOne);
 router.put("/:id", Controller.update);
 router.delete("/:id", Controller.destroy);
 router.delete("/", Controller.destroyMany);

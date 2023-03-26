@@ -43,9 +43,24 @@ Date.prototype.addDays = function (days) {
 }
 
 Subscription.beforeCreate(async (subscription, options) => {
+    //Check if the customer has already subscribed to the package and the subscription is not expired
+    const foundSubscription = await Subscription.findOne({
+        where: {
+            customer_id: subscription.customer_id,
+            package_id: subscription.package_id,
+            expiringAt: {
+                [Sequelize.Op.gte]: new Date()
+            }
+        }
+    });
+
+    let date = new Date();
+    if (foundSubscription) {
+        date = foundSubscription.expiringAt;
+    }
+
     //Adding expiring date;
     const foundPackage = await Package.findByPk(subscription.package_id, {include: Duration});
-    let date = new Date();
     date = date.addDays(foundPackage.duration.days)
     subscription.expiringAt = date;
 

@@ -49,7 +49,6 @@ Branch.hasMany(Course, {
 })
 Course.belongsTo(Branch, {
     foreignKey: "branch_id",
-
 });
 
 //Branch and call_log
@@ -126,8 +125,8 @@ Class.belongsToMany(Tag, {through: "class_tags"});
 Tag.belongsToMany(Class, {through: "class_tags"});
 
 //Class and Package relation
+Class.hasMany(Package, {foreignKey: "class_id",onDelete:'CASCADE'});
 Package.belongsTo(Class, {foreignKey: "class_id"});
-Class.hasMany(Package, {foreignKey: "class_id"});
 
 //Package and Duration relation
 Duration.hasMany(Package, {foreignKey: "duration_id"});
