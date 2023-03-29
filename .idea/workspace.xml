@@ -6,16 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.16.12">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/classes/class_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/class_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/classes/package_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/package_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/course_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/course_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/customer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/employee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/class/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/class/class.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/course.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/course.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,6 +290,8 @@
       <workItem from="1679946105632" duration="323000" />
       <workItem from="1679982006613" duration="12362000" />
       <workItem from="1680062272295" duration="1405000" />
+      <workItem from="1680064214075" duration="3047000" />
+      <workItem from="1680079215842" duration="5072000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>

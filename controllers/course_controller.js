@@ -38,6 +38,7 @@ async function fetch(req, res, next) {
                     {title: {[Op.like]: `%${search}%`}},
                     {description: {[Op.like]: `%${search}%`}},
                     {duration: {[Op.lte]: search}},
+                    {price: {[Op.lte]: search}},
                 ],
                 ...req.query,
             }
@@ -65,6 +66,14 @@ async function fetch(req, res, next) {
             }else if(orderColumn === "duration"){
                 order = [
                     ["duration", orderDirection]
+                ]
+            }else if(orderColumn=="starting_date"){
+                order = [
+                    ["starting_date", orderDirection]
+                ]
+            }else if(orderColumn=="price"){
+                order = [
+                    ["price", orderDirection]
                 ]
             }
         }
