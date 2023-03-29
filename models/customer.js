@@ -13,6 +13,7 @@ const Customer = sequelize.define("customer",
         username: {
             type: DataTypes.STRING(75),
             unique: true,
+            allowNull: true,
         },
         photoUrl: {
             type: DataTypes.STRING(255),
@@ -20,9 +21,7 @@ const Customer = sequelize.define("customer",
         email: {
             type: DataTypes.STRING(50),
             unique: true,
-            validate: {
-                isEmail: true
-            },
+            allowNull: true,
         },
         phoneNumber: {
             type: DataTypes.STRING(20),

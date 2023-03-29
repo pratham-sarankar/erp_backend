@@ -8,6 +8,34 @@ const Class = require("../../models/class");
 const {Op} = require("sequelize");
 
 async function insert(req, res, next) {
+    //Step 1: If email exist, verify it and check if customer already exist with that email.
+    if(req.body.email){
+        const email = req.body.email;
+
+        const customer = await Customer.findOne({where:{email:email}});
+        if(customer){
+            return res.status(409).json({status: "error", data: null, message: "Customer exist with this email."});
+        }
+    }
+
+    //Step 2: If phone number exist, verify it and check if customer already exist with that phone number.
+    if(req.body.phoneNumber){
+        const phoneNumber = req.body.phoneNumber;
+        const customer = await Customer.findOne({where:{phoneNumber:phoneNumber}});
+        if(customer){
+            return res.status(409).json({status: "error", data: null, message: "Customer exist with this phone number."});
+        }
+    }
+
+    //Step 3: If username exist, verify it and check if customer already exist with that username.
+    if(req.body.username){
+        const username = req.body.username;
+        const customer = await Customer.findOne({where:{username:username}});
+        if(customer){
+            return res.status(409).json({status: "error", data: null, message: "Customer exist with this username."});
+        }
+    }
+
     try {
         const data = await Customer.create(req.body);
         return res.status(201).json({status: "success", data: data, message: "Customer created successfully"});

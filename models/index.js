@@ -30,6 +30,7 @@ Employee.belongsTo(Branch, {
 //Branch and customer
 Branch.hasMany(Customer, {
     foreignKey: "branch_id",
+    onDelete: 'CASCADE'
 })
 Customer.belongsTo(Branch, {
     foreignKey: "branch_id",

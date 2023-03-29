@@ -3,6 +3,7 @@ const Package = require("../../models/package");
 const Employee = require("../../models/employee");
 const {Op} = require("sequelize");
 const Subscription = require("../../models/subscription");
+const Customer = require("../../models/customer");
 
 async function insert(req, res, next) {
     console.log(req.body)
@@ -68,6 +69,12 @@ async function fetch(req, res, next) {
         delete req.query.order;
         delete req.query.DESC;
 
+        order = [
+            ...order,
+            ["createdAt", "DESC"],
+        ]
+
+
         const options = {
                 where: req.query,
                 limit: limit,
@@ -108,6 +115,56 @@ function fetchWithCount(req,res,next) {
     return fetch(req,res,next);
 }
 
+async function fetchMembers(req,res,next){
+    const id = req.params.id;
+
+    try {
+        const packages = await Package.findAll({
+            where: {class_id: id},
+        });
+        const packageIds = packages.map(p => p.id);
+
+        if(req.query.search){
+            const search = req.query.search;
+            //Find all customers with the search string in their firstName, lastName, username or phoneNumber
+            req.query = {
+                [Op.or]: [
+                    {firstName: {[Op.like]: `%${search}%`}},
+                    {lastName: {[Op.like]: `%${search}%`}},
+                    {username: {[Op.like]: `%${search}%`}},
+                    {phoneNumber: {[Op.like]: `%${search}%`}},
+                    //Write query for case when search will be firstName lastName
+                    {
+                        [Op.and]: [
+                            {firstName: {[Op.like]: `%${search.split(' ')[0]}%`}},
+                            {lastName: {[Op.like]: `%${search.split(' ')[1]}%`}},
+                        ]
+                    },
+                ],
+                ...req.query,
+            }
+        }
+        delete req.query.search;
+
+        const members = await Customer.findAndCountAll({
+            include: [
+                {
+                    model: Subscription,
+                    where: {
+                        package_id: packageIds,
+
+                    }
+                }
+            ],
+            where: req.query,
+        });
+
+
+       return res.status(200).json({status: "success", data: members, message: "Members fetched successfully."});
+    }catch (e) {
+        next(e);
+    }
+}
 
 async function update(req, res, next) {
     const id = req.params.id;
@@ -143,4 +200,4 @@ async function destroyMany(req, res, next) {
 
 }
 
-module.exports = {insert, fetchOne, fetch,fetchWithCount, update, destroy, destroyMany};
+module.exports = {insert, fetchOne, fetch,fetchWithCount, fetchMembers, update, destroy, destroyMany};

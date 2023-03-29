@@ -4,24 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.15.12">
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 1.16.12">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/classes/class_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/class_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/classes/package_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/package_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/course_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/course_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/employees/designation_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/designation_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/payment_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/payment_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/payment_mode_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/payment_mode_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/subscription_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/subscription_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/order_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/order_middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/customer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/employee.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/subscription.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/subscription.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/class/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/class/class.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/customers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/employees/employees.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employees/employees.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/payment_modes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/payment_modes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/payments.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/payments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/subscription.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/subscription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/course.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,7 +292,12 @@
       <workItem from="1679728446516" duration="6890000" />
       <workItem from="1679741851931" duration="8590000" />
       <workItem from="1679758968097" duration="4112000" />
-      <workItem from="1679803356739" duration="6317000" />
+      <workItem from="1679803356739" duration="15751000" />
+      <workItem from="1679854891255" duration="7703000" />
+      <workItem from="1679900386700" duration="9345000" />
+      <workItem from="1679946105632" duration="323000" />
+      <workItem from="1679982006613" duration="12362000" />
+      <workItem from="1680062272295" duration="1405000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
@@ -608,7 +607,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679071459734</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Version 1.16.12">
+      <created>1679829630270</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1679829630270</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,7 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Version 1.1.1" />
     <MESSAGE value="Version 1.2.1" />
     <MESSAGE value="Version 1.3.1" />
     <MESSAGE value="Version 1.4.1" />
@@ -652,6 +657,7 @@
     <MESSAGE value="Version 1.14.10" />
     <MESSAGE value="Version 1.14.11" />
     <MESSAGE value="Version 1.15.12" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.15.12" />
+    <MESSAGE value="Version 1.16.12" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.16.12" />
   </component>
 </project>

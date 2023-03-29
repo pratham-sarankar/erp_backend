@@ -1,4 +1,6 @@
 const Course = require("../models/course");
+const {Op} = require("sequelize");
+const Payment = require("../models/payment");
 
 async function insert(req, res, next) {
     try {
@@ -28,17 +30,80 @@ async function fetch(req, res, next) {
     const limit = parseInt(req.headers.limit ?? "100");
     const offset = parseInt(req.headers.offset ?? "0");
     try {
-        const classes = await Course.findAll(
-            {
-                where: req.query,
-                limit:limit,
-                offset:offset,
-            },
-        );
-        return res.status(200).json({status: "success", data: classes, message: "Courses fetched successfully."});
+        if(req.query.search){
+            //Find all classes with title, description, or trainer like search
+            const search = req.query.search;
+            req.query = {
+                [Op.or]: [
+                    {title: {[Op.like]: `%${search}%`}},
+                    {description: {[Op.like]: `%${search}%`}},
+                    {duration: {[Op.lte]: search}},
+                ],
+                ...req.query,
+            }
+        }
+        delete req.query.search;
+
+        let order = [];
+        if(req.query.order){
+            const orderColumn = req.query.order;
+            //Initialize orderDirection to ASC
+            let orderDirection = "ASC";
+            //If DESC is true, then orderDirection is DESC
+            if (req.query.DESC === "true"){
+                orderDirection = "DESC";
+            }
+
+            if (orderColumn === "title"){
+                order = [
+                    ["title", orderDirection],
+                ]
+            }else if (orderColumn === "description"){
+                order = [
+                    ["description", orderDirection]
+                ]
+            }else if(orderColumn === "duration"){
+                order = [
+                    ["duration", orderDirection]
+                ]
+            }
+        }
+        delete req.query.order;
+        delete req.query.DESC;
+
+
+        order = [
+            ...order,
+            ["createdAt", "DESC"],
+        ]
+
+        const options = {
+            where: req.query,
+            limit:limit,
+            offset:offset,
+            order:order,
+        };
+
+        let courses;
+        const withCount = req.query.count;
+        delete req.query.count;
+
+        if(withCount){
+            courses= await Course.findAndCountAll(options);
+        }else{
+            courses = await Course.findAll(options);
+        }
+
+        return res.status(200).json({status: "success", data: courses, message: "Courses fetched successfully."});
     } catch (err) {
         next(err);
     }
+}
+
+
+async function fetchWithCount(req,res,next){
+    req.query.count = true;
+    return fetch(req,res,next);
 }
 
 
@@ -80,4 +145,4 @@ async function destroyMany(req, res, next) {
 
 }
 
-module.exports = {insert, fetchOne, fetch, update, destroy, destroyMany};
+module.exports = {insert, fetchOne, fetch,fetchWithCount, update, destroy, destroyMany};

@@ -5,48 +5,38 @@ const {Op} = require("sequelize");
 const Customer = require("../../models/customer");
 
 
-async function insert(req, res) {
-    const email = req.body.email;
-    const phoneNumber = req.body.phoneNumber;
-    const designationId = req.body.designation_id;
+async function insert(req, res,next) {
 
     try {
 
-        //At least one of phone number and email is required.
-        if (email == null && phoneNumber == null) {
-            return res.status(400).json({
+        //Step 1 : If email exist, verify it and check if employee exist with the given email.
+        if (req.body.email) {
+            const email = req.body.email;
+            const employee = await Employee.findOne({where: {email: email}});
+            if (employee != null) return res.status(403).json({
                 status: "error",
                 data: null,
-                message: "A unique Email or Phone number is required to register a new employee."
-            })
-        }
-
-        //Find designation or throw 404 error.
-        if (designationId != null) {
-            const designation = await Designation.findByPk(designationId);
-            if (designation == null) return res.status(404).json({
-                status: "error",
-                data: null,
-                message: "Designation not found"
+                message: "Employee already exist with the given email."
             });
         }
 
-        //Created(Built and Saved) the employee in the database.
-        const employee = await Employee.create(req.body);
-
-        if (designationId != null) {
-            await employee.setDesignation(designationId);
+        //Step 2 : If phone number exist, verify it and check if employee exist with the given phone number.
+        if(req.body.phoneNumber){
+            const phoneNumber = req.body.phoneNumber;
+            const employee = await Employee.findOne({where: {phoneNumber: phoneNumber}});
+            if (employee != null) return res.status(403).json({
+                status: "error",
+                data: null,
+                message: "Employee already exist with the given phone number."
+            });
         }
+
+        const employee = await Employee.create(req.body);
 
         return res.status(201).json({status: "success", data: employee, message: "Employee created successfully"});
 
-    } catch (error) {
-        if (error['name'] === 'SequelizeUniqueConstraintError') {
-            const message = `Employee already exist with the given ${error.errors[0].path}.`;
-            return res.status(403).json({status: "error", data: null, message: message});
-        }
-        console.log(error);
-        return res.status(500).json({status: "error", data: null, message: error})
+    } catch (err) {
+        next(err);
     }
 }
 
@@ -139,6 +129,12 @@ async function fetch(req, res) {
     const withCount = req.query.count;
     delete req.query.count;
 
+    order = [
+        ...order,
+        ["createdAt", "DESC"],
+    ]
+
+
     const options = {
             where: req.query,
             limit: limit,
@@ -213,8 +209,8 @@ async function destroy(req, res) {
 }
 
 async function destroyMany(req, res) {
-    const ids = req.body.ids;
-    console.log(ids);
+    const ids = req.query.ids;
+
     try {
         await Employee.destroy({where: {id: ids}})
         return res.status(200).json({status: "success", data: null, message: "Employees deleted successfully."});

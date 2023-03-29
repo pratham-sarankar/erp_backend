@@ -5,7 +5,7 @@ const Controller = require("../../controllers/classes/class_controller");
 router.post("/", Controller.insert);
 router.get("/", Controller.fetch);
 router.get("/count", Controller.fetchWithCount);
-
+router.get("/:id/members",Controller.fetchMembers);
 router.get("/:id", Controller.fetchOne);
 router.put("/:id", Controller.update);
 router.delete("/:id", Controller.destroy);

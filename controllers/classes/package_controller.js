@@ -28,10 +28,11 @@ async function fetchOne(req, res, next) {
 }
 
 async function fetch(req, res, next) {
-    let options = {include: Duration};
-    if (req.query.classId) {
-        options = {where: {class_id: req.query.classId}};
-    }
+    let options = {
+        where: req.query,
+        include: Duration
+    };
+
     try {
         const packages = await Package.findAll(options);
         return res.status(200).json({status: "success", data: packages, message: "Packages fetched successfully."});
