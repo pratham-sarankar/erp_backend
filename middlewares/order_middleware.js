@@ -10,9 +10,6 @@ async function verifyOrder(req,res,next){
     try{
         //If mode id exist, the payment process is manual. So, redirect it to the next function.
         if(req.body.mode_id){
-            console.log(req.body);
-            const foundPackage = await Package.findByPk(req.body.package_id);
-            req.body.amount = foundPackage.price;
             const payment = await Payment.create(req.body);
             req.body.payment_id = payment.id;
             next();

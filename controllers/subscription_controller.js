@@ -7,6 +7,8 @@ const Coupon = require("../models/coupon");
 const PaymentMode = require("../models/payment_mode");
 const {Op} = require("sequelize");
 
+
+
 async function insert(req, res, next) {
     try {
         const newSubscription = await Subscription.create(req.body);
@@ -45,7 +47,6 @@ async function fetch(req, res, next) {
             const classPackages = await Package.findAll({where: {class_id: classId}});
             const ids = classPackages.map(value => value.id);
             req.query.package_id = ids
-            // return res.json({classId:classId,packages:ids})
         }
         delete req.query.class_id;
 
@@ -122,6 +123,11 @@ async function fetch(req, res, next) {
             }else if (orderColumn === "payment_mode"){
                 order = [
                     [Payment, PaymentMode, "title", orderDirection],
+                ]
+            }else if (orderColumn === "discount"){
+                order = [
+                    ['discount_type', orderDirection],
+                    ['discount_value', orderDirection],
                 ]
             }else if (orderColumn === "coupon"){
                 order = [

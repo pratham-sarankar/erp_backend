@@ -4,6 +4,7 @@ const {DataTypes} = require('sequelize');
 const Package = require("./package");
 const Duration = require("./duration");
 const Class = require("./class");
+const Payment = require("./payment");
 
 
 const Subscription = sequelize.define("subscription",
@@ -27,6 +28,23 @@ const Subscription = sequelize.define("subscription",
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW,
         },
+        discount_type:{
+            type: DataTypes.STRING(10),
+            defaultValue: "none",
+            validate: {
+                isIn: [['percentage', 'price', 'none']],
+            },
+        },
+        discount_value:{
+            type: DataTypes.DOUBLE,
+            defaultValue: 0,
+        },
+        original_amount:{
+            type: DataTypes.DOUBLE,
+        },
+        discounted_amount:{
+            type: DataTypes.DOUBLE,
+        },
         expiringAt: {
             type: DataTypes.DATE,
         },
@@ -41,6 +59,13 @@ Date.prototype.addDays = function (days) {
     date.setDate(date.getDate() + days);
     return date;
 }
+
+Subscription.beforeCreate(async (subscription, options) => {
+  const foundPackage = await Package.findByPk(subscription.package_id);
+  const payment = await Payment.findByPk(subscription.payment_id);
+  subscription.original_amount = foundPackage.price;
+  subscription.discounted_amount = payment.amount;
+})
 
 Subscription.beforeCreate(async (subscription, options) => {
     //Check if the customer has already subscribed to the package and the subscription is not expired

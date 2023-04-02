@@ -5,8 +5,8 @@ async function sendMail(req,res,next){
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'developer.pratham@gmail.com',
-                pass: 'mdhmkurvnyqbtegb'
+                user: 'gyanishyogaschool@gmail.com',
+                pass: 'aisnvkdffkiejuck'
             }
         });
         const mailOptions = {

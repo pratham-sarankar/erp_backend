@@ -158,7 +158,7 @@ async function updatePassword(req, res, next) {
 
         const newToken = TokenController.generateNewToken(user);
         return res.status(200).json({
-            status: "success",
+            status: "success", 
             data: {user: user, token: newToken},
             message: "Password updated successfully."
         });

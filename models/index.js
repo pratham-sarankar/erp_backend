@@ -18,6 +18,7 @@ const Subscription = require("./subscription");
 const Coupon = require("./coupon");
 const Batch = require("./batch")
 const CallLog = require("./call_log");
+const Purchase = require("./purchases");
 
 //Branch and employee
 Branch.hasMany(Employee, {
@@ -86,6 +87,18 @@ Subscription.belongsTo(Branch, {
     foreignKey: "branch_id",
 
 });
+
+
+//Branch and purchase
+Branch.hasMany(Purchase, {
+    foreignKey: "branch_id",
+})
+Purchase.belongsTo(Branch, {
+    foreignKey: "branch_id",
+});
+
+
+
 
 //User and employee
 Employee.hasMany(User, {
@@ -167,6 +180,20 @@ PermissionGroup.hasMany(Permission, {foreignKey: "group_id"});
 Permission.belongsTo(PermissionGroup, {foreignKey: "group_id"});
 Module.hasMany(Permission, {foreignKey: "module_id"});
 Permission.belongsTo(Module, {foreignKey: "module_id"});
+
+
+
+
+//Purchase and customer relation
+Customer.hasMany(Purchase, {foreignKey: "customer_id"});
+Purchase.belongsTo(Customer, {foreignKey: "customer_id"});
+
+//Course and Subscription relation
+Course.hasMany(Purchase, {foreignKey: "course_id"});
+Purchase.belongsTo(Course, {foreignKey: "course_id"});
+
+//Payment and subscription relation;
+Payment.hasOne(Purchase, {foreignKey: "payment_id"});
 
 
 
