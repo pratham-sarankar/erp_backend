@@ -59,6 +59,10 @@ async function fetch(req, res, next) {
                 order = [
                     ["title", orderDirection],
                 ]
+            }else if (orderColumn === "batch"){
+                order = [
+                    ["batch_no", orderDirection]
+                ]
             }else if (orderColumn === "description"){
                 order = [
                     ["description", orderDirection]

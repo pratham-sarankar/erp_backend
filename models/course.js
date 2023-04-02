@@ -4,6 +4,7 @@ const { DataTypes } = require('sequelize');
 
 const Course = sequelize.define("course",
     {
+
         photoUrl:{
             type:DataTypes.STRING(255),
         },
@@ -30,10 +31,14 @@ const Course = sequelize.define("course",
                 isNumeric:true,
             },
         },
+        batch_no:{
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
         branch_id:{
             type:DataTypes.INTEGER,
             allowNull:false,
-        }
+        },
     },
     {
         sequelize,
