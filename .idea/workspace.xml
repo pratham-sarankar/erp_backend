@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 2.0.0">
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 2.1.0">
+      <change afterPath="$PROJECT_DIR$/controllers/purchase_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/purchase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/course_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/course_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/course.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/discount_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/discount_middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/router_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/router_middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/enquiry.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/enquiry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/purchases.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/purchase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/subscription.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/subscription.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +307,12 @@
       <workItem from="1680331922548" duration="1639000" />
       <workItem from="1680342802772" duration="5444000" />
       <workItem from="1680392553208" duration="7009000" />
-      <workItem from="1680413098381" duration="1803000" />
+      <workItem from="1680413098381" duration="2674000" />
+      <workItem from="1680417745348" duration="626000" />
+      <workItem from="1680421370990" duration="10786000" />
+      <workItem from="1680449969413" duration="8111000" />
+      <workItem from="1680506715060" duration="9000" />
+      <workItem from="1680509780355" duration="7839000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
@@ -631,7 +643,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680412154994</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Version 2.1.0">
+      <created>1680415024608</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1680415024608</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +669,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Version 1.4.1" />
     <MESSAGE value="Version 1.5.1" />
     <MESSAGE value="Version 1.5.2" />
     <MESSAGE value="Version 1.6.2" />
@@ -675,6 +693,7 @@
     <MESSAGE value="Version 1.16.12" />
     <MESSAGE value="Version 1.18.12" />
     <MESSAGE value="Version 2.0.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 2.0.0" />
+    <MESSAGE value="Version 2.1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 2.1.0" />
   </component>
 </project>

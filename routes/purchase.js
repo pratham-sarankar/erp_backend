@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const Controller = require("../controllers/subscription_controller");
+const Controller = require("../controllers/purchase_controller");
 const OrderMiddleware = require("../middlewares/order_middleware");
 const TokenMiddleware = require("../middlewares/token_middlewares");
 const DiscountMiddleware = require("../middlewares/discount_middleware");
 
-router.post("/", DiscountMiddleware.evaluateDiscountForClass, OrderMiddleware.verifyOrder, Controller.insert);
+router.post("/", DiscountMiddleware.evaluateDiscountForCourse, OrderMiddleware.verifyOrder, Controller.insert);
 router.get("/", Controller.fetch);
 router.get("/count", Controller.fetchWithCount);
 router.get("/:id", Controller.fetchOne);

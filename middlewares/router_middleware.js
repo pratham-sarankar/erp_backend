@@ -23,6 +23,7 @@ const couponRouter = require("../routes/coupons");
 const callLogRouter = require("../routes/call_log");
 const mailRouter = require("../routes/mail");
 const batchRouter = require('../routes/class/batch');
+const purchaseRouter = require('../routes/purchase');
 
 function router(app) {
     //Routers
@@ -51,6 +52,7 @@ function router(app) {
     app.use('/call-log', callLogRouter);
     app.use('/mail', mailRouter);
     app.use('/batch', batchRouter);
+    app.use("/purchase", purchaseRouter);
 
 
     //Error handler
