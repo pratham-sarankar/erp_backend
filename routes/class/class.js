@@ -4,6 +4,7 @@ const Controller = require("../../controllers/classes/class_controller");
 
 router.post("/", Controller.insert);
 router.get("/", Controller.fetch);
+router.get("/summary", Controller.fetchSummary);
 router.get("/count", Controller.fetchWithCount);
 router.get("/:id/members",Controller.fetchMembers);
 router.get("/:id", Controller.fetchOne);

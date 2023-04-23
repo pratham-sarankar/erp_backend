@@ -4,17 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 2.1.0">
-      <change afterPath="$PROJECT_DIR$/controllers/purchase_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/purchase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="9e53a04e-315d-4eb8-ac7a-c0138f800763" name="Changes" comment="Version 2.1.1">
+      <change afterPath="$PROJECT_DIR$/scripts/connect.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/push.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/discount_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/discount_middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/router_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/router_middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/enquiry.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/enquiry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/purchases.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/purchase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/subscription.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/subscription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/classes/class_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classes/class_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/course_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/course_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/customers/customer_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customers/customer_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/employees/employee_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employees/employee_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/payment_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/payment_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/class/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/class/class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/course.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/customers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/employees/employees.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employees/employees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/payments.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/payments.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +73,7 @@
     &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;rest.client.default.execution.environment&quot;: &quot;dev&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -312,7 +317,42 @@
       <workItem from="1680421370990" duration="10786000" />
       <workItem from="1680449969413" duration="8111000" />
       <workItem from="1680506715060" duration="9000" />
-      <workItem from="1680509780355" duration="7839000" />
+      <workItem from="1680509780355" duration="8555000" />
+      <workItem from="1680536677193" duration="598000" />
+      <workItem from="1680571831166" duration="1364000" />
+      <workItem from="1680605463029" duration="1993000" />
+      <workItem from="1680618639291" duration="13000" />
+      <workItem from="1680665291688" duration="772000" />
+      <workItem from="1680677271053" duration="709000" />
+      <workItem from="1680761879626" duration="2306000" />
+      <workItem from="1680786646561" duration="41000" />
+      <workItem from="1680800963543" duration="637000" />
+      <workItem from="1680924801958" duration="31000" />
+      <workItem from="1681100854670" duration="1952000" />
+      <workItem from="1681212079011" duration="2572000" />
+      <workItem from="1681230479570" duration="2235000" />
+      <workItem from="1681271320430" duration="29000" />
+      <workItem from="1681288689062" duration="2900000" />
+      <workItem from="1681294730750" duration="4975000" />
+      <workItem from="1681315134512" duration="14000" />
+      <workItem from="1681356102862" duration="5775000" />
+      <workItem from="1681363842153" duration="909000" />
+      <workItem from="1681372963251" duration="1000" />
+      <workItem from="1681383037521" duration="626000" />
+      <workItem from="1681410650057" duration="135000" />
+      <workItem from="1681410797867" duration="234000" />
+      <workItem from="1681443557655" duration="1524000" />
+      <workItem from="1681452894423" duration="977000" />
+      <workItem from="1681454753582" duration="187000" />
+      <workItem from="1681454960715" duration="81000" />
+      <workItem from="1681455052140" duration="3982000" />
+      <workItem from="1681463742108" duration="118000" />
+      <workItem from="1681463868342" duration="3690000" />
+      <workItem from="1681551497322" duration="3835000" />
+      <workItem from="1681615362175" duration="9503000" />
+      <workItem from="1682158094231" duration="732000" />
+      <workItem from="1682162071315" duration="386000" />
+      <workItem from="1682216633318" duration="881000" />
     </task>
     <task id="LOCAL-00001" summary="database hosted">
       <created>1669489411691</created>
@@ -650,7 +690,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680415024608</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Version 2.1.1">
+      <created>1680532756313</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1680532756313</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,7 +716,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Version 1.5.1" />
     <MESSAGE value="Version 1.5.2" />
     <MESSAGE value="Version 1.6.2" />
     <MESSAGE value="Version 1.7.2" />
@@ -694,6 +740,7 @@
     <MESSAGE value="Version 1.18.12" />
     <MESSAGE value="Version 2.0.0" />
     <MESSAGE value="Version 2.1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 2.1.0" />
+    <MESSAGE value="Version 2.1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 2.1.1" />
   </component>
 </project>

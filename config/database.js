@@ -14,6 +14,6 @@ sequelize.authenticate().then(async () => {
     });
 }).catch((error) => {
     console.log(`Database Connection Failed ${error}`);
-})
+});
 
 module.exports = sequelize;

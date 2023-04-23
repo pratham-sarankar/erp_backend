@@ -4,6 +4,7 @@ const Controller = require("../controllers/course_controller");
 
 router.post("/", Controller.insert);
 router.get("/", Controller.fetch);
+router.get("/summary", Controller.fetchSummary);
 router.get("/count", Controller.fetchWithCount);
 router.get("/:id", Controller.fetchOne);
 router.put("/:id", Controller.update);

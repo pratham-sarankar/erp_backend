@@ -6,6 +6,7 @@ const Payment = require("../../models/payment");
 const Package = require("../../models/package");
 const Class = require("../../models/class");
 const {Op} = require("sequelize");
+const moment = require("moment");
 
 async function insert(req, res, next) {
     //Step 1: If email exist, verify it and check if customer already exist with that email.
@@ -277,6 +278,109 @@ async function login(customer, req, res, next) {
 }
 
 
+async function fetchSummary(req, res) {
+    const { range } = req.query;
+    let fromDate, toDate, prevFromDate, prevToDate;
+
+    // Set fromDate and toDate based on the selected range
+    switch (range) {
+        case 'weekly':
+            fromDate = moment().startOf('isoWeek').format('YYYY-MM-DD');
+            toDate = moment().endOf('isoWeek').format('YYYY-MM-DD');
+            prevFromDate = moment().startOf('isoWeek').subtract(1, 'week').format('YYYY-MM-DD');
+            prevToDate = moment().endOf('isoWeek').subtract(1, 'week').format('YYYY-MM-DD');
+            break;
+        case 'monthly':
+            fromDate = moment().startOf('month').format('YYYY-MM-DD');
+            toDate = moment().endOf('month').format('YYYY-MM-DD');
+            prevFromDate = moment().startOf('month').subtract(1, 'month').format('YYYY-MM-DD');
+            prevToDate = moment().endOf('month').subtract(1, 'month').format('YYYY-MM-DD');
+            break;
+        case 'yearly':
+            fromDate = moment().startOf('year').format('YYYY-MM-DD');
+            toDate = moment().endOf('year').format('YYYY-MM-DD');
+            prevFromDate = moment().startOf('year').subtract(1, 'year').format('YYYY-MM-DD');
+            prevToDate = moment().endOf('year').subtract(1, 'year').format('YYYY-MM-DD');
+            break;
+        default:
+            return res.status(400).json({
+                status: 'error',
+                data: null,
+                message: 'Invalid range parameter',
+            });
+    }
+
+    delete req.query.range;
+
+    // Find the number of customers registered during the current range
+    const customers = await Customer.findAll({
+        where: {
+            ...req.query,
+            createdAt: {
+                [Op.between]: [fromDate, toDate],
+            },
+        },
+    });
+
+    const customerCount = customers.length;
+
+    // Find the number of customers registered during the previous range
+    const prevCustomerCount = await Customer.count({
+        where: {
+            ...req.query,
+            createdAt: {
+                [Op.between]: [prevFromDate, prevToDate],
+            },
+        },
+    });
+
+    const difference = customerCount - prevCustomerCount;
+
+    const monthlyCustomerSummary = await _monthlyCustomerSummary(req);
+
+    // Send response
+    return res.status(200).json({
+        status: 'success',
+        data: {
+            total: customerCount,
+            difference: difference,
+            recent: customers,
+            monthly: monthlyCustomerSummary,
+        },
+        message: 'Summary fetched successfully.',
+    });
+}
+
+
+async function _monthlyCustomerSummary(req) {
+    const currentYear = moment().year(); // Get the current year
+    const customersByMonth = [];
+
+    // Loop through all the months of the current year
+    for (let month = 0; month < 12; month++) {
+        const fromDate = moment().year(currentYear).month(month).startOf('month').format('YYYY-MM-DD');
+        const toDate = moment().year(currentYear).month(month).endOf('month').format('YYYY-MM-DD');
+
+        // Find customers registered in the current month
+        const customers = await Customer.findAll({
+            where: {
+                ...req.query,
+                createdAt: {
+                    [Op.between]: [fromDate, toDate],
+                },
+            },
+        });
+
+        // Count the total number of customers for the current month
+        const totalCustomers = customers.length;
+
+        // Push the total number of customers for the current month to the array
+        customersByMonth.push(totalCustomers);
+    }
+    return customersByMonth;
+}
+
+
 module.exports = {
     insert,
     fetchMe,
@@ -290,5 +394,6 @@ module.exports = {
     loginWithPhoneNumber,
     register,
     fetchMyPayments,
-    fetchMySubscription
+    fetchMySubscription,
+    fetchSummary
 };

@@ -6,6 +6,7 @@ const TokenMiddleware = require("../middlewares/token_middlewares");
 
 router.post("/", Controller.insert);
 router.get("/", Controller.fetch);
+router.get("/summary",Controller.fetchSummary);
 router.get("/count",Controller.fetchWithCount);
 router.get("/me", TokenMiddleware.verifyToken, Controller.fetchMe);
 router.get("/me/subscriptions",TokenMiddleware.verifyToken,Controller.fetchMySubscription);

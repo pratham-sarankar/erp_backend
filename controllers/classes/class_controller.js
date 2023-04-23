@@ -200,4 +200,17 @@ async function destroyMany(req, res, next) {
 
 }
 
-module.exports = {insert, fetchOne, fetch,fetchWithCount, fetchMembers, update, destroy, destroyMany};
+async function fetchSummary(req,res){
+    const totalClasses = await Class.count({
+        where: req.query,
+    });
+    return res.status(200).json({
+        status: "success",
+        data: {
+            total: totalClasses,
+        },
+        message: "Summary fetched successfully."
+    });
+}
+
+module.exports = {insert, fetchOne, fetch, fetchWithCount, fetchMembers, update, destroy, destroyMany, fetchSummary};
